@@ -557,6 +557,13 @@ section {
     line-height: 1.6;
 }
 
+.project-period {
+    color: #6b7280;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
 /* Skills Section */
 .skills {
     background: #f8fafc;
