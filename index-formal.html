@@ -298,6 +298,22 @@
             <div class="projects-grid">
                 <div class="project-item">
                     <div class="project-header">
+                        <h3>Word Syllabification for Indonesian Language using Transformer</h3>
+                        <span class="project-type">Academic Publication</span>
+                    </div>
+                    <div class="project-description">
+                        <p><strong>Period:</strong> 2023</p>
+                        <p><strong>Overview:</strong> Syllabification is the process of breaking words into a series of syllables, essential for NLP applications such as speech recognition, text-to-speech, rhyme detection, and more. This research focuses on Indonesian syllabification following the General Guidelines for Indonesian Language Spelling (PUEBI).</p>
+                        <p><strong>Methodology:</strong> Developed a deep learning model using Transformer architecture combined with a custom Syllable Tagging tokenizer to handle long contextual dependencies and improve syllable boundary detection accuracy.</p>
+                        <p><strong>Custom Syllable Tagging Tokenizer:</strong> Implemented a character-level vectorization approach where each character is first converted to a numeric vector (e.g., m=23, a=9, k=4, n=7). Then, syllable boundaries are tagged with binary labels: 1 marks the start of a syllable, 0 marks syllable continuation. For example: "makan" (ma-kan) has character vectors [23,9,4,9,7] and syllable tags [1,0,1,0,0], resulting in binary 10100. Similarly, "media" (me-di-a) has character vectors that are tagged [1,0,1,0,1], resulting in binary 10101. This innovative tokenization method enables the Transformer model to efficiently learn and predict syllable boundaries by understanding character-level patterns combined with explicit syllable position markers.</p>
+                        <p><strong>Corpus & Evaluation:</strong> Trained on a comprehensive corpus combining "50k KBBI 5-k fold" and "103k Named Entity 5-k fold" datasets using the custom Syllable Tagging tokenizer. Evaluated using Word Error Rate (WER) metric.</p>
+                        <p><strong>Results:</strong> Achieved 3.68% WER, improving upon the previous best deep learning model's 3.75% WER. The model demonstrates universal applicability for Indonesian words with consistent performance across both formal and named entity categories.</p>
+                        <p><strong>Significance:</strong> Established as the state-of-the-art deep learning model for Indonesian syllabification at the time of publication, presented at the 2023 International Seminar on Intelligent Technology and Its Applications (ISITIA).</p>
+                        <p><strong>DOI:</strong> 10.1109/ISITIA59021.2023.10221089</p>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-header">
                         <h3>JKT48 Twitter Reply and Retweet Sentiment Analysis and Emotion Detection</h3>
                         <span class="project-type">Data Science Project</span>
                     </div>
