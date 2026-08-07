@@ -206,6 +206,225 @@
     footer { padding: 32px 0 54px; color: #717d78; font-size: 12px; }
     .footer-row { display: flex; justify-content: space-between; gap: 18px; border-top: 1px solid var(--line); padding-top: 24px; }
 
+
+    .print-only { display: none; }
+
+    @media print {
+      @page { size: A4; margin: 12mm 12mm 14mm; }
+
+      :root {
+        --bg: #ffffff;
+        --panel: #ffffff;
+        --panel-2: #ffffff;
+        --text: #111111;
+        --muted: #4b5563;
+        --line: #cbd5e1;
+        --accent: #111111;
+        --accent-2: #374151;
+        --warm: #374151;
+        --shadow: none;
+      }
+
+      html { scroll-behavior: auto; }
+      body {
+        background: #ffffff !important;
+        color: #111111 !important;
+        font-size: 9.5pt;
+        line-height: 1.38;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      header,
+      .skip-link,
+      .menu-btn,
+      .hero-actions,
+      .arrow,
+      .no-print { display: none !important; }
+
+      .print-only { display: block !important; }
+      main { overflow: visible; }
+      .wrap { width: 100%; max-width: none; margin: 0; }
+
+      a { color: #111111 !important; text-decoration: none !important; }
+      h1, h2, h3, h4 { color: #111111 !important; break-after: avoid-page; page-break-after: avoid; }
+      p, li { orphans: 3; widows: 3; }
+
+      .hero {
+        padding: 0 0 7mm;
+        border-bottom: 1px solid #aeb7c2;
+      }
+      .hero-grid { grid-template-columns: 1.5fr .7fr; gap: 7mm; }
+      .hero h1, h1 { margin-top: 4mm; font-size: 27pt; line-height: 1.02; letter-spacing: -.04em; }
+      .dim { color: #4b5563 !important; }
+      .eyebrow, .kicker, .experience-date, .tech-group-label, .research-label { color: #374151 !important; }
+      .dot { background: #111111 !important; box-shadow: none !important; }
+      .lede { max-width: none; margin-bottom: 0; font-size: 10pt; color: #242b33 !important; }
+      .hero-note {
+        margin: 0;
+        padding: 4mm;
+        border: 1px solid #cbd5e1;
+        background: #ffffff !important;
+        color: #4b5563 !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .hero-note strong { color: #111111 !important; }
+      .print-meta {
+        margin-top: 4mm;
+        padding-top: 3mm;
+        border-top: 1px solid #d7dde5;
+        font: 8.5pt/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+        color: #374151 !important;
+      }
+
+      .stats {
+        grid-template-columns: repeat(4, 1fr);
+        margin-top: 5mm;
+        border-color: #cbd5e1;
+        background: #ffffff !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .stat { padding: 3.5mm 3mm; border-color: #cbd5e1 !important; }
+      .stat-value { font-size: 17pt; color: #111111 !important; }
+      .stat-label { font-size: 7.5pt; color: #4b5563 !important; }
+
+      section { padding: 7mm 0; }
+      .section-head {
+        grid-template-columns: 27mm 1fr;
+        gap: 4mm;
+        margin-bottom: 4mm;
+      }
+      h2 { font-size: 20pt; line-height: 1.08; }
+      .section-copy { margin-top: 2mm; max-width: none; font-size: 9pt; color: #4b5563 !important; }
+
+      .focus-grid { grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+      .focus-card {
+        min-height: 0;
+        padding: 4mm;
+        border: 1px solid #cbd5e1;
+        background: #ffffff !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .focus-card h3 { margin-top: 6mm; font-size: 12.5pt; }
+      .focus-card p { font-size: 8.5pt; color: #4b5563 !important; }
+      .focus-num { color: #64748b !important; }
+      .chip-row { gap: 1.5mm; margin-top: 3mm; }
+      .chip, .project-meta span {
+        padding: 1mm 2mm;
+        border-color: #cbd5e1 !important;
+        background: #ffffff !important;
+        color: #374151 !important;
+        font-size: 7pt;
+      }
+
+      .experience-list { gap: 3mm; }
+      .experience-card {
+        grid-template-columns: 35mm 1fr;
+        gap: 5mm;
+        padding: 4mm;
+        border-color: #cbd5e1;
+        background: #ffffff !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .experience-card h3 { font-size: 13.5pt; }
+      .experience-card p, .role-item p { color: #4b5563 !important; font-size: 8.5pt; }
+      .impact-line { color: #303842 !important; }
+      .role-stack { gap: 2.5mm; margin-top: 3mm; }
+      .role-item {
+        padding: 3mm;
+        border-color: #d7dde5;
+        background: #ffffff !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .role-item h4 { font-size: 9pt; }
+      .role-item time { color: #4b5563 !important; font-size: 7pt; }
+
+      .research-card {
+        padding: 5mm;
+        border-color: #aeb7c2;
+        background: #ffffff !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .research-card::after { display: none; }
+      .research-card h3 { margin: 3mm 0 2mm; font-size: 16pt; }
+      .research-card p, .research-meta { color: #4b5563 !important; }
+      .research-actions { margin-top: 3mm; }
+      .research-actions .btn { padding: 1mm 0; border: 0; background: transparent !important; font-size: 8pt; }
+
+      .projects, .private-grid { grid-template-columns: repeat(2, 1fr); gap: 3mm; }
+      .project, .private-card {
+        padding: 4mm;
+        min-height: 0;
+        border-color: #cbd5e1 !important;
+        background: #ffffff !important;
+        box-shadow: none !important;
+        transform: none !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .project h3, .private-card h3 { font-size: 12pt; }
+      .project p, .private-card p { color: #4b5563 !important; font-size: 8.25pt; }
+      .project-badge { color: #374151 !important; }
+      .privacy-banner { border-color: #cbd5e1 !important; background: #ffffff !important; color: #4b5563 !important; }
+
+      .stack-list { border-color: #cbd5e1 !important; }
+      .stack-row { grid-template-columns: 42mm 1fr 15mm; gap: 3mm; padding: 2.5mm 3mm; border-color: #d7dde5 !important; }
+      .bar { background: #e5e7eb !important; }
+      .bar > span { background: #6b7280 !important; }
+      .stack-count { color: #374151 !important; }
+      .tech-matrix { grid-template-columns: repeat(2, 1fr); gap: 3mm; }
+      .tech-group {
+        padding: 4mm;
+        border-color: #cbd5e1 !important;
+        background: #ffffff !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .tech-group h3 { font-size: 11.5pt; }
+      .tech-group p { color: #4b5563 !important; font-size: 8pt; }
+
+      .principles { grid-template-columns: repeat(2, 1fr); gap: 4mm; }
+      .principle { padding: 3mm 0; border-color: #cbd5e1 !important; break-inside: avoid; }
+      .principle h3 { font-size: 11pt; }
+      .principle p { color: #4b5563 !important; font-size: 8.25pt; }
+
+      .contact-card {
+        padding: 5mm;
+        border-color: #aeb7c2;
+        background: #ffffff !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .contact-card p { color: #4b5563 !important; font-size: 9pt; }
+      .contact-actions { margin-top: 3mm; display: grid; gap: 1mm; }
+      .contact-actions .btn {
+        width: auto;
+        justify-content: flex-start;
+        padding: 0;
+        border: 0;
+        background: transparent !important;
+        color: #111111 !important;
+        font-size: 8.5pt;
+      }
+
+      footer { padding: 4mm 0 0; color: #64748b !important; font-size: 7pt; }
+      .footer-row { padding-top: 3mm; border-color: #cbd5e1 !important; }
+
+      .focus-card, .experience-card, .role-item, .research-card, .project, .private-card,
+      .tech-group, .principle, .contact-card, .stats { box-shadow: none !important; }
+    }
+
     @media (max-width: 900px) {
       .hero { padding-top: 78px; }
       .hero-grid, .section-head { grid-template-columns: 1fr; gap: 18px; }
@@ -276,10 +495,12 @@
     <section class="hero" id="top">
       <div class="wrap">
         <div class="eyebrow"><span class="dot" aria-hidden="true"></span> Technical Lead · Backend Engineer · Data Scientist · Go-first</div>
-        <h1>Muhammad Haykal Kamil. <span class="dim">I build systems that ship.</span></h1>
+        <h1>Muhammad Haykal Kamil.</h1>
+        <h1><span class="dim">I build systems that ship.</span></h1>
         <div class="hero-grid">
           <div>
             <p class="lede">I’m Kamil, a technical lead, backend engineer, and data scientist with 5+ years across software engineering, data, and AI, plus hands-on technical and teaching work dating back to 2020. I lead cross-functional delivery, build Go services and full-stack TypeScript products, and ship applied AI—from classical ML and document intelligence to production LLM-powered tools.</p>
+            <div class="print-only print-meta">kamilhaykal240801@gmail.com · github.com/kamil5b · linkedin.com/in/kamil5b · kamil5b.github.io/resume/index-formal</div>
             <div class="hero-actions">
               <a class="btn btn-primary" href="#experience">View experience ↓</a>
               <a class="btn btn-secondary" href="https://github.com/kamil5b" target="_blank" rel="noreferrer">@kamil5b on GitHub ↗</a>
