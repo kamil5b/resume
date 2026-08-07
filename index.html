@@ -1,485 +1,709 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kamil - CV Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Muhammad Haykal Kamil — Technical Lead, Backend Engineer & Data Scientist building Go systems, full-stack products, developer tools, LLM-powered applications, and applied AI/ML systems." />
+  <meta name="theme-color" content="#0a0d0f" />
+  <title>Muhammad Haykal Kamil — Technical Lead, Backend Engineer & Data Scientist</title>
+  <style>
+    :root {
+      --bg: #0a0d0f;
+      --panel: #101519;
+      --panel-2: #151c21;
+      --text: #f2f7f5;
+      --muted: #9eaaa6;
+      --line: #263138;
+      --accent: #8cf7c5;
+      --accent-2: #a5b4fc;
+      --warm: #ffcc80;
+      --max: 1160px;
+      --radius: 22px;
+      --shadow: 0 24px 80px rgba(0,0,0,.28);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 85% 8%, rgba(140,247,197,.10), transparent 25rem),
+        radial-gradient(circle at 15% 36%, rgba(165,180,252,.08), transparent 30rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .wrap { width: min(calc(100% - 36px), var(--max)); margin: 0 auto; }
+
+    .skip-link {
+      position: absolute; left: -999px; top: 8px; z-index: 999;
+      background: var(--accent); color: #07100c; padding: 10px 14px; border-radius: 10px;
+    }
+    .skip-link:focus { left: 12px; }
+
+    header {
+      position: sticky; top: 0; z-index: 50;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      background: rgba(10,13,15,.78);
+      backdrop-filter: blur(16px);
+    }
+    nav { height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 760; letter-spacing: -.02em; }
+    .brand-mark {
+      width: 32px; height: 32px; border: 1px solid rgba(140,247,197,.45); border-radius: 10px;
+      display: grid; place-items: center; color: var(--accent); background: rgba(140,247,197,.06);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 24px; color: var(--muted); font-size: 14px; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--text); }
+    .nav-cta {
+      padding: 9px 13px; border: 1px solid var(--line); border-radius: 12px; color: var(--text) !important;
+      background: rgba(255,255,255,.03);
+    }
+    .menu-btn { display: none; border: 0; background: transparent; color: var(--text); padding: 8px; }
+
+    main { overflow: hidden; }
+    .hero { padding: 104px 0 72px; }
+    .eyebrow {
+      display: inline-flex; gap: 9px; align-items: center; color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 13px; letter-spacing: .05em; text-transform: uppercase;
+    }
+    .dot { width: 7px; height: 7px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 18px rgba(140,247,197,.65); }
+    h1 {
+      margin: 18px 0 24px; max-width: 970px; font-size: clamp(48px, 8vw, 100px); line-height: .96; letter-spacing: -.065em;
+      font-weight: 820;
+    }
+    h1 .dim { color: #69736f; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(260px, .7fr); gap: 48px; align-items: end; }
+    .lede { max-width: 760px; color: #c5cfcb; font-size: clamp(18px, 2vw, 22px); letter-spacing: -.015em; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 9px; min-height: 46px; padding: 0 16px; border-radius: 13px;
+      border: 1px solid var(--line); font-weight: 700; font-size: 14px; transition: transform .16s ease, border-color .16s ease, background .16s ease;
+    }
+    .btn:hover { transform: translateY(-2px); border-color: #45535a; }
+    .btn-primary { background: var(--accent); color: #07120d; border-color: transparent; }
+    .btn-secondary { background: rgba(255,255,255,.025); }
+    .hero-note {
+      padding: 18px 0 4px 22px; border-left: 1px solid var(--line); color: var(--muted); font-size: 14px;
+    }
+    .hero-note strong { display: block; margin-bottom: 4px; color: var(--text); font-size: 15px; }
+
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: rgba(255,255,255,.018); box-shadow: var(--shadow); }
+    .stat { min-height: 144px; padding: 25px 26px; border-right: 1px solid var(--line); }
+    .stat:last-child { border-right: 0; }
+    .stat-value { font-size: clamp(30px, 4vw, 44px); line-height: 1; letter-spacing: -.045em; font-weight: 800; }
+    .stat-label { margin-top: 13px; color: var(--muted); font-size: 13px; }
+
+    section { padding: 96px 0; }
+    .section-head { display: grid; grid-template-columns: .55fr 1.45fr; gap: 36px; margin-bottom: 42px; }
+    .kicker { color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: .09em; padding-top: 8px; }
+    h2 { margin: 0; font-size: clamp(34px, 4.8vw, 58px); line-height: 1.02; letter-spacing: -.045em; }
+    .section-copy { max-width: 720px; margin: 16px 0 0; color: var(--muted); font-size: 17px; }
+
+    .focus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .focus-card, .project, .private-card {
+      position: relative; border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(150deg, rgba(255,255,255,.035), rgba(255,255,255,.012));
+    }
+    .focus-card { padding: 26px; min-height: 280px; }
+    .focus-num { color: #68736e; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+    .focus-card h3 { margin: 42px 0 10px; font-size: 23px; letter-spacing: -.025em; }
+    .focus-card p { margin: 0; color: var(--muted); font-size: 15px; }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 20px; }
+    .chip {
+      display: inline-flex; align-items: center; min-height: 28px; padding: 0 9px; border-radius: 999px;
+      border: 1px solid #2b373d; color: #b7c2be; background: rgba(0,0,0,.12); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px;
+    }
+
+    .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .project { padding: 28px; min-height: 330px; display: flex; flex-direction: column; overflow: hidden; transition: transform .18s ease, border-color .18s ease; }
+    .project:hover { transform: translateY(-3px); border-color: #405058; }
+    .project::after {
+      content: ""; position: absolute; width: 170px; height: 170px; right: -90px; bottom: -90px; border-radius: 999px;
+      background: radial-gradient(circle, rgba(140,247,197,.12), transparent 68%); pointer-events: none;
+    }
+    .project-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .project-badge { color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
+    .arrow { font-size: 23px; color: #76827e; transition: transform .18s ease, color .18s ease; }
+    .project:hover .arrow { transform: translate(3px,-3px); color: var(--accent); }
+    .project h3 { margin: 40px 0 11px; font-size: 28px; letter-spacing: -.035em; }
+    .project p { margin: 0; color: var(--muted); max-width: 580px; }
+    .project .chip-row { margin-top: auto; padding-top: 28px; }
+    .project-meta { display: flex; gap: 16px; margin-top: 18px; color: #7d8985; font-size: 12px; }
+
+    .privacy-banner {
+      display: flex; justify-content: space-between; gap: 24px; align-items: center; margin: 0 0 20px; padding: 18px 20px;
+      border: 1px solid rgba(165,180,252,.25); border-radius: 15px; background: rgba(165,180,252,.055); color: #c7ceef; font-size: 14px;
+    }
+    .lock { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--accent-2); font-size: 12px; white-space: nowrap; }
+    .private-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .private-card { padding: 25px; min-height: 230px; }
+    .private-card h3 { margin: 26px 0 9px; font-size: 21px; letter-spacing: -.02em; }
+    .private-card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .private-icon { color: var(--accent-2); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+
+    .stack-panel { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    .stack-row { display: grid; grid-template-columns: 190px 1fr 84px; gap: 20px; align-items: center; min-height: 78px; padding: 0 24px; border-bottom: 1px solid var(--line); }
+    .stack-row:last-child { border-bottom: 0; }
+    .stack-name { font-weight: 750; letter-spacing: -.015em; }
+    .bar { height: 5px; overflow: hidden; border-radius: 99px; background: #20282c; }
+    .bar > span { display: block; height: 100%; width: var(--w); border-radius: inherit; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+    .stack-count { color: var(--muted); text-align: right; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+
+    .tech-matrix { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 20px; }
+    .tech-group { padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: rgba(255,255,255,.018); }
+    .tech-group-label { color: var(--accent-2); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .07em; }
+    .tech-group h3 { margin: 12px 0 8px; font-size: 20px; letter-spacing: -.02em; }
+    .tech-group p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .experience-list { display: grid; gap: 16px; }
+    .experience-card {
+      display: grid; grid-template-columns: 220px 1fr; gap: 34px; padding: 28px;
+      border: 1px solid var(--line); border-radius: 18px; background: rgba(255,255,255,.018);
+    }
+    .experience-date { color: var(--accent-2); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: .055em; }
+    .experience-org { margin-top: 8px; color: var(--muted); font-size: 13px; }
+    .experience-card h3 { margin: 0 0 9px; font-size: 23px; letter-spacing: -.025em; }
+    .experience-card p { margin: 0; color: var(--muted); }
+    .impact-line { margin-top: 14px !important; color: #c8d1ce !important; font-size: 14px; }
+    .role-stack { display: grid; gap: 14px; margin-top: 18px; }
+    .role-item { padding: 16px 18px; border: 1px solid rgba(255,255,255,.07); border-radius: 14px; background: rgba(255,255,255,.018); }
+    .role-item-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 6px; }
+    .role-item h4 { margin: 0; font-size: 15px; letter-spacing: -.01em; }
+    .role-item time { color: var(--accent-2); font: 11px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; text-transform: uppercase; letter-spacing: .045em; white-space: nowrap; }
+    .role-item p { font-size: 14px; }
+
+    .research-card {
+      position: relative; overflow: hidden; padding: clamp(28px, 4vw, 44px); border: 1px solid rgba(140,247,197,.28);
+      border-radius: 22px; background: linear-gradient(145deg, rgba(140,247,197,.065), rgba(165,180,252,.035));
+    }
+    .research-card::after { content: "Transformer"; position: absolute; right: 24px; top: 18px; color: rgba(255,255,255,.035); font-size: clamp(52px, 9vw, 104px); font-weight: 850; letter-spacing: -.06em; pointer-events: none; }
+    .research-label { color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+    .research-card h3 { position: relative; margin: 22px 0 12px; max-width: 850px; font-size: clamp(28px, 4vw, 42px); line-height: 1.08; letter-spacing: -.035em; }
+    .research-card p { position: relative; max-width: 850px; margin: 0; color: var(--muted); }
+    .research-meta { position: relative; display: flex; gap: 12px 22px; flex-wrap: wrap; margin-top: 20px; color: #aeb9b5; font-size: 13px; }
+    .research-actions { position: relative; display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
+
+    .principles { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .principle { padding: 28px 0; border-top: 1px solid var(--line); }
+    .principle h3 { margin: 0 0 9px; font-size: 21px; }
+    .principle p { margin: 0; color: var(--muted); max-width: 500px; }
+
+    .contact-card {
+      padding: clamp(32px, 6vw, 70px); border: 1px solid #31423d; border-radius: 28px;
+      background: linear-gradient(135deg, rgba(140,247,197,.09), rgba(165,180,252,.045) 55%, rgba(255,255,255,.018));
+      box-shadow: var(--shadow);
+    }
+    .contact-card h2 { max-width: 800px; }
+    .contact-card p { max-width: 670px; margin: 18px 0 0; color: #b4bfbb; font-size: 17px; }
+    .contact-actions { margin-top: 30px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+    footer { padding: 32px 0 54px; color: #717d78; font-size: 12px; }
+    .footer-row { display: flex; justify-content: space-between; gap: 18px; border-top: 1px solid var(--line); padding-top: 24px; }
+
+    @media (max-width: 900px) {
+      .hero { padding-top: 78px; }
+      .hero-grid, .section-head { grid-template-columns: 1fr; gap: 18px; }
+      .hero-note { margin-top: 8px; }
+      .stats { grid-template-columns: repeat(2,1fr); }
+      .stat:nth-child(2) { border-right: 0; }
+      .stat:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .focus-grid { grid-template-columns: 1fr; }
+      .focus-card { min-height: 220px; }
+      .projects, .private-grid { grid-template-columns: 1fr; }
+      .experience-card { grid-template-columns: 1fr; gap: 14px; }
+      .role-item-head { align-items: flex-start; flex-direction: column; gap: 4px; }
+    }
+
+    @media (max-width: 680px) {
+      nav { height: 64px; }
+      .menu-btn { display: block; }
+      .nav-links {
+        display: none; position: absolute; left: 18px; right: 18px; top: 70px; padding: 16px;
+        flex-direction: column; align-items: stretch; gap: 6px; border: 1px solid var(--line); border-radius: 15px;
+        background: #0d1215; box-shadow: var(--shadow);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 8px 10px; }
+      h1 { font-size: clamp(46px, 17vw, 74px); }
+      .hero { padding: 66px 0 56px; }
+      section { padding: 72px 0; }
+      .stats { grid-template-columns: 1fr; }
+      .stat { border-right: 0; border-bottom: 1px solid var(--line) !important; }
+      .stat:last-child { border-bottom: 0 !important; }
+      .privacy-banner { align-items: flex-start; flex-direction: column; }
+      .stack-row { grid-template-columns: 1fr 64px; gap: 10px; padding: 17px 18px; }
+      .bar { grid-column: 1 / -1; grid-row: 2; }
+      .tech-matrix { grid-template-columns: 1fr; }
+      .principles { grid-template-columns: 1fr; }
+      .footer-row { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">Kamil</div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#education" class="nav-link">Education</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header>
+    <nav class="wrap" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Kamil5b home">
+        <span class="brand-mark">K5</span>
+        <span>kamil5b</span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#experience">Experience</a>
+        <a href="#research">Research</a>
+        <a href="#work">Work</a>
+        <a href="#stack">Stack</a>
+        <a href="https://kamil5b.github.io/resume/index-formal" target="_blank" rel="noreferrer">CV ↗</a>
+        <a href="https://www.linkedin.com/in/kamil5b" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        <a class="nav-cta" href="https://github.com/kamil5b" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </div>
     </nav>
+  </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">Hi, I'm Muhammad Haykal Kamil</h1>
-                <h2 class="hero-subtitle">Backend Developer & Data Scientist</h2>
-                <p class="hero-description">
-                    An enthusiastic professional passionate about continuous learning and improvement. 
-                    I excel at collaboration and communication, with proven leadership experience.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#about" class="btn btn-primary">Learn More</a>
-                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
-                </div>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap">
+        <div class="eyebrow"><span class="dot" aria-hidden="true"></span> Technical Lead · Backend Engineer · Data Scientist · Go-first</div>
+        <h1>Muhammad Haykal Kamil. <span class="dim">I build systems that ship.</span></h1>
+        <div class="hero-grid">
+          <div>
+            <p class="lede">I’m Kamil, a technical lead, backend engineer, and data scientist with 5+ years across software engineering, data, and AI, plus hands-on technical and teaching work dating back to 2020. I lead cross-functional delivery, build Go services and full-stack TypeScript products, and ship applied AI—from classical ML and document intelligence to production LLM-powered tools.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#experience">View experience ↓</a>
+              <a class="btn btn-secondary" href="https://github.com/kamil5b" target="_blank" rel="noreferrer">@kamil5b on GitHub ↗</a>
+              <a class="btn btn-secondary" href="https://www.linkedin.com/in/kamil5b" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+              <a class="btn btn-secondary" href="https://kamil5b.github.io/resume/index-formal" target="_blank" rel="noreferrer">Formal CV ↗</a>
             </div>
-            <div class="hero-image">
-                <div class="profile-placeholder">
-                    <i class="fas fa-user"></i>
-                </div>
-            </div>
+          </div>
+          <aside class="hero-note" aria-label="Portfolio note">
+            <strong>Public detail, private discretion.</strong>
+            Private repository evidence is represented only as anonymized engineering scope and technology experience.
+          </aside>
         </div>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        I am an enthusiastic individual who gets excited with every new piece of knowledge and constantly strives to improve. 
-                        I work well with colleagues and communicate effectively in team environments.
-                    </p>
-                    <p>
-                        I have demonstrated leadership capabilities, having served as Head of Aspiration Committee in the School of Computer Science 
-                        at Telkom University and led various projects throughout my career.
-                    </p>
-                </div>
-                <div class="about-stats">
-                    <div class="stat-item">
-                        <h3>4+</h3>
-                        <p>Years Experience</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>10+</h3>
-                        <p>Projects Completed</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>3+</h3>
-                        <p>Leadership Roles</p>
-                    </div>
-                </div>
-            </div>
+    <div class="wrap" aria-label="GitHub engineering snapshot">
+      <div class="stats">
+        <div class="stat"><div class="stat-value">103</div><div class="stat-label">repositories contributed to</div></div>
+        <div class="stat"><div class="stat-value">3,322</div><div class="stat-label">commits in evidence snapshot</div></div>
+        <div class="stat"><div class="stat-value">44</div><div class="stat-label">repositories using Go</div></div>
+        <div class="stat"><div class="stat-value">5+ yrs</div><div class="stat-label">software, data & AI experience</div></div>
+      </div>
+    </div>
+
+    <section aria-labelledby="focus-heading">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">01 / Focus</div>
+          <div>
+            <h2 id="focus-heading">Engineering across the product stack.</h2>
+            <p class="section-copy">My work clusters around reliable Go services, internal developer platforms, database tooling, and product interfaces in TypeScript. I also build applied AI/ML systems—from LLM-powered products and document intelligence to deep-learning workflows and cloud-hosted model pipelines.</p>
+          </div>
         </div>
+        <div class="focus-grid">
+          <article class="focus-card">
+            <div class="focus-num">01</div>
+            <h3>Backend & platform</h3>
+            <p>APIs, workers, modular monoliths, service gateways, database-facing systems, and deployment-friendly tooling.</p>
+            <div class="chip-row"><span class="chip">Go</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span><span class="chip">Shell</span></div>
+          </article>
+          <article class="focus-card">
+            <div class="focus-num">02</div>
+            <h3>Developer tools</h3>
+            <p>CLIs, schema tooling, code generation, lightweight DB interfaces, framework experiments, and workflow automation.</p>
+            <div class="chip-row"><span class="chip">CLI</span><span class="chip">Codegen</span><span class="chip">HTMX</span><span class="chip">Make</span></div>
+          </article>
+          <article class="focus-card">
+            <div class="focus-num">03</div>
+            <h3>Full-stack & AI</h3>
+            <p>Modern TypeScript products and AI-enabled applications, including agentic LLM workflows, document understanding, model integration, and deep-learning experimentation.</p>
+            <div class="chip-row"><span class="chip">TypeScript</span><span class="chip">Next.js</span><span class="chip">TanStack Start</span><span class="chip">LangGraph</span><span class="chip">Python</span></div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- Education Section -->
-    <section id="education" class="education">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="education-grid">
-                <div class="education-card">
-                    <div class="education-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="education-content">
-                        <h3>Bachelor of Informatics</h3>
-                        <h4>Telkom University</h4>
-                        <p class="education-period">2019 - 2023</p>
-                        <p class="education-description">
-                            Graduated with a strong foundation in computer science and information technology.
-                        </p>
-                        <div class="academic-paper">
-                            <h5>Academic Paper:</h5>
-                            <p><strong>Title:</strong> Word Syllabification for Indonesian Language using Transformer</p>
-                            <p><strong>DOI:</strong> 10.1109/ISITIA59021.2023.10221089</p>
-                            <p><strong>Published in:</strong> 2023 International Seminar on Intelligent Technology and Its Applications (ISITIA)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section id="experience" aria-labelledby="experience-heading">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">02 / Experience</div>
+          <div>
+            <h2 id="experience-heading">Production systems, AI, and data work.</h2>
+            <p class="section-copy">A condensed professional timeline cross-checked against my formal CV and LinkedIn experience history. The emphasis is progression, scope, and outcomes; private implementation details and repository identities remain intentionally omitted.</p>
+          </div>
         </div>
+
+        <div class="experience-list">
+          <article class="experience-card">
+            <div>
+              <div class="experience-date">Nov 2023 — Present</div>
+              <div class="experience-org">REDIKRU · Full-time<br>Jakarta · Hybrid</div>
+            </div>
+            <div>
+              <h3>Backend → Data & AI → Technical Leadership</h3>
+              <p>Expanded from core backend ownership into applied data/AI and technical leadership while continuing to contribute across production systems, MVP delivery, and R&amp;D.</p>
+              <div class="role-stack">
+                <div class="role-item">
+                  <div class="role-item-head"><h4>Technical Lead</h4><time>Oct 2025 — Present</time></div>
+                  <p>Lead a 4-member cross-functional team delivering full-stack MVPs and R&amp;D initiatives, oversee Data &amp; AI engineering alongside backend work, and coordinate technical alignment, task distribution, and delivery.</p>
+                </div>
+                <div class="role-item">
+                  <div class="role-item-head"><h4>Data Scientist</h4><time>Aug 2024 — Present</time></div>
+                  <p>Gather and analyze business data, build and deploy ML models, work with LLMs/VLMs through prompting and fine-tuning, and deploy data/ML solutions with AWS SageMaker and Lambda using Python and SQL.</p>
+                </div>
+                <div class="role-item">
+                  <div class="role-item-head"><h4>Back End Developer</h4><time>Nov 2023 — Present</time></div>
+                  <p>Core backend engineer across production products from MVP to live deployment. Built Go/Gin server-worker systems, TypeScript services, a B2C maritime job-matching platform, and B2B ERP systems covering crew, vessel, contracts, LMS, attendance, and payroll.</p>
+                </div>
+              </div>
+              <p class="impact-line"><strong>Delivery:</strong> 5 web ERP products + 2 mobile ERP applications for client companies; Clean Architecture, TDD, API versioning, database architecture, Redis caching, and Asynq background processing.</p>
+              <p class="impact-line"><strong>Additional reported impact:</strong> reduced production costs by 70% through LLM API integrations and improved team productivity through ML, data engineering, and workflow optimization.</p>
+              <div class="chip-row"><span class="chip">Go</span><span class="chip">Gin</span><span class="chip">TypeScript</span><span class="chip">ERP</span><span class="chip">Redis</span><span class="chip">Asynq</span><span class="chip">AWS SageMaker</span><span class="chip">AWS Lambda</span><span class="chip">LLM / VLM</span><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Metabase</span></div>
+            </div>
+          </article>
+
+          <article class="experience-card">
+            <div>
+              <div class="experience-date">Mar 2026 — Jun 2026</div>
+              <div class="experience-org">Technova Solusi · Freelance<br>Backend Engineer</div>
+            </div>
+            <div>
+              <h3>Telecom provisioning & integration microservice</h3>
+              <p>Built and maintained a Go microservice for ISP service provisioning, order management, and customer operations, acting as an integration layer between internal systems and external platforms. Designed a shared business layer serving REST and gRPC clients with Clean Architecture / Port &amp; Adapter principles.</p>
+              <p class="impact-line"><strong>Integration scope:</strong> 10+ external APIs spanning payments, OIDC authentication, media/services, WhatsApp omnichannel, and telecom providers; event-driven processing with Kafka, Redis-backed OTP/token workflows, signed webhook verification, and TM Forum-aligned service APIs.</p>
+              <div class="chip-row"><span class="chip">Go</span><span class="chip">Gin</span><span class="chip">gRPC</span><span class="chip">Protobuf</span><span class="chip">MariaDB</span><span class="chip">GORM</span><span class="chip">Redis</span><span class="chip">Apache Kafka</span><span class="chip">Keycloak / OIDC</span><span class="chip">REST APIs</span><span class="chip">Clean Architecture</span><span class="chip">TM Forum</span></div>
+            </div>
+          </article>
+
+          <article class="experience-card">
+            <div>
+              <div class="experience-date">Apr 2025 — Oct 2025</div>
+              <div class="experience-org">Technova Integrasi Solusi · Freelance<br>AI Engineer · Remote</div>
+            </div>
+            <div>
+              <h3>From LangGraph prototype to production Go AI service</h3>
+              <p>Built an AI chatbot agent in Python with LangGraph, then migrated and reimplemented the solution in Go for production readiness. Delivered the AI solution end-to-end from experimentation through implementation and collaborated directly with client stakeholders.</p>
+              <div class="chip-row"><span class="chip">LangGraph</span><span class="chip">Python</span><span class="chip">Go</span><span class="chip">AI Agents</span><span class="chip">LLM API</span><span class="chip">Client Delivery</span></div>
+            </div>
+          </article>
+
+          <article class="experience-card">
+            <div>
+              <div class="experience-date">Jun 2023 — Jul 2023</div>
+              <div class="experience-org">bank bjb · Internship<br>DPLK Operations · On-site</div>
+            </div>
+            <div>
+              <h3>Data visualization in financial operations</h3>
+              <p>Supported DPLK operational work through data visualization and website review, adding financial-services exposure to an engineering and data-focused background.</p>
+              <div class="chip-row"><span class="chip">Data Visualization</span><span class="chip">Analysis</span><span class="chip">Website Review</span></div>
+            </div>
+          </article>
+
+          <article class="experience-card">
+            <div>
+              <div class="experience-date">Feb 2021 — Feb 2023</div>
+              <div class="experience-org">Telkom University<br>Teaching, laboratory &amp; NLP roles</div>
+            </div>
+            <div>
+              <h3>Teaching foundations and NLP research</h3>
+              <p>Served across programming, data structures, software testing, object-oriented programming, and NLP teaching roles. Guided classes in Go, Java, C++, Python/NLTK, Maven, Jira, and Katalon; also coordinated OOP practicum assistants before supporting an NLP course as an assistant lecturer.</p>
+              <p class="impact-line"><strong>Leadership foundation:</strong> coordinated practicum responsibilities and guided multiple classes before moving into professional engineering leadership.</p>
+              <div class="chip-row"><span class="chip">Go</span><span class="chip">Java</span><span class="chip">C++</span><span class="chip">Python</span><span class="chip">NLTK</span><span class="chip">NLP</span><span class="chip">Software Testing</span><span class="chip">Teaching</span></div>
+            </div>
+          </article>
+
+          <article class="experience-card">
+            <div>
+              <div class="experience-date">Jun 2021 — Jan 2022</div>
+              <div class="experience-org">eKopz · Internship<br>Back End Developer</div>
+            </div>
+            <div>
+              <h3>Early production backend experience</h3>
+              <p>Worked on backend systems for a digital cooperative platform, including API development and database-oriented engineering for financial-service workflows.</p>
+              <div class="chip-row"><span class="chip">Backend</span><span class="chip">API Development</span><span class="chip">Database Design</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2 class="section-title">Work Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Freelance Backend Engineer</h3>
-                            <span class="company">Technova Solusi</span>
-                            <span class="period">March 2026 - June 2026</span>
-                        </div>
-                        <blockquote>
-                            <p>Built and maintained a microservice for ISP service provisioning, order management, and customer operations, serving as the core integration layer between internal systems and external platforms.</p>
-                        </blockquote>
-                        <h5>Key Responsibilities</h5>
-                        <ul>
-                            <li><strong>Clean Architecture Microservice:</strong> Designed and implemented a clean architecture microservice in Go (Gin + gRPC) following the Port & Adapter pattern, serving both REST and gRPC clients from a single business logic layer</li>
-                            <li><strong>API Integration:</strong> Integrated 10+ external APIs including Midtrans (payment gateway), Keycloak (OIDC auth), VIDIO.com, Qontak (WhatsApp omnichannel), Telecommunication and Internet Provider</li>
-                            <li><strong>TM Forum Compliance:</strong> Implemented TMF633/638/640-aligned service catalog, inventory, and activation APIs following TM Forum open standards</li>
-                            <li><strong>Event-Driven Architecture:</strong> Built event-driven async processing with Apache Kafka and idempotent event consumers backed by MariaDB deduplication</li>
-                            <li><strong>OTP Delivery:</strong> Developed multi-channel OTP delivery (email via SMTP + WhatsApp via Qontak) with Redis-backed TTL and token caching</li>
-                            <li><strong>Security:</strong> Implemented HMAC webhook verification (SHA-512 for Midtrans, SHA-256 for Qontat) and Keycloak OIDC-protected endpoints with rate limiting via APISIX</li>
-                            <li><strong>Database Management:</strong> Managed database schema versioning with embedded SQL migrations auto-applied on startup</li>
-                        </ul>
-                        <p><strong>Tech Stack:</strong> Go · Gin · gRPC · Protobuf · MariaDB · GORM · Redis · Apache Kafka · Keycloak (OIDC) · REST APIs · Clean Architecture · TM Forum (TMF633/641)</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>AI Engineer</h3>
-                            <span class="company">Technova</span>
-                            <span class="period">April 2025 - Oct 2025</span>
-                        </div>
-                        <p>Using mainly LangGraph from LangChain for AI development and implementation.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Data Scientist</h3>
-                            <span class="company">Redikru</span>
-                            <span class="period">Aug 2024 - Present</span>
-                        </div>
-                        <ul class="timeline-details">
-                            <li><strong>AI/ML Engineer:</strong>
-                                <ul>
-                                    <li>Prompt Engineer</li>
-                                    <li>Integrate Claude AI using AWS Lambda</li>
-                                    <li>Train and inference XGBoost Classification Model deployed using AWS SageMaker Serverless / On-Demand (both are experienced)</li>
-                                </ul>
-                            </li>
-                            <li>Database Administrator</li>
-                            <li><strong>Data Analyst</strong></li>
-                            <li><strong>Data Engineer:</strong>
-                                <ul>
-                                    <li>Patch data, create mini-app etc using mostly SQL</li>
-                                    <li>Provide data for internal from our app database presented using Metabase</li>
-                                </ul>
-                            </li>
-                            <li><strong>Notable Project:</strong>
-                                <ul>
-                                    <li>Create in-house internal database manipulator and database management using Fullstack NextJS that connected to all database in company</li>
-                                </ul>
-                            </li>
-                            <li><strong>Key Impact:</strong> Reduced production costs by 70% through LLM API integrations; Increased team productivity by 70% via ML Solutions, effective data engineering, decision making, and process optimization</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                                                    <h3>Backend Developer</h3>
-                        <span class="company">Redikru</span>
-                        <span class="period">Nov 2023 - Present</span>
-                    </div>
-                    <p>Developed all products in the company as an individual contributor using Go, demonstrating strong technical skills and project management capabilities.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Natural Language Processing Course Assistant Lecturer</h3>
-                            <span class="company">Telkom University</span>
-                            <span class="period">Sep 2022 - Feb 2023</span>
-                        </div>
-                        <p>Assisted in teaching and developing course materials for Natural Language Processing courses using NLTK and deep learning frameworks.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Intern Backend Developer</h3>
-                            <span class="company">eKopz (Koperasi Digital)</span>
-                            <span class="period">June 2021 - Jan 2022</span>
-                        </div>
-                        <p>Gained practical experience in backend development and digital cooperative systems.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Practicum Assistant</h3>
-                            <span class="company">Informatics Lab School of Computer Science Telkom University</span>
-                            <span class="period">Feb 2020 - Feb 2023</span>
-                        </div>
-                        <p>Mentored practicum courses in:</p>
-                        <ul class="timeline-details">
-                            <li>Object-Oriented Programming (Java)</li>
-                            <li>Basic Programming (Go)</li>
-                            <li>Data Structure (C++)</li>
-                        </ul>
-                        <p><strong>Leadership:</strong> Once served as Head of Practicum Assistant for Object-Oriented Programming course.</p>
-                    </div>
-                </div>
-            </div>
+    <section id="research" aria-labelledby="research-heading">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">03 / Research</div>
+          <div>
+            <h2 id="research-heading">Published work in Indonesian NLP.</h2>
+            <p class="section-copy">My undergraduate research applied Transformer-based deep learning to Indonesian word syllabification and was published at ISITIA 2023.</p>
+          </div>
         </div>
+
+        <article class="research-card">
+          <div class="research-label">IEEE Conference Publication · ISITIA 2023</div>
+          <h3>Word Syllabification for Indonesian Language using Transformer</h3>
+          <p>Developed a character-level syllable-tagging approach with a Transformer architecture for Indonesian syllabification. The work used KBBI and named-entity corpora and reported a 3.68% Word Error Rate, improving on the 3.75% result cited as the previous best deep-learning model in the project evaluation.</p>
+          <div class="research-meta">
+            <span>Muhammad Haykal Kamil · Suyanto · Mochammad Arif Bijaksana</span>
+            <span>2023 International Seminar on Intelligent Technology and Its Applications</span>
+            <span>DOI: 10.1109/ISITIA59021.2023.10221089</span>
+          </div>
+          <div class="chip-row"><span class="chip">Transformer</span><span class="chip">Deep Learning</span><span class="chip">NLP</span><span class="chip">Indonesian Language</span><span class="chip">Syllabification</span></div>
+          <div class="research-actions">
+            <a class="btn btn-primary" href="https://doi.org/10.1109/ISITIA59021.2023.10221089" target="_blank" rel="noreferrer">Open DOI ↗</a>
+            <a class="btn btn-secondary" href="https://kamil5b.github.io/resume/index-formal" target="_blank" rel="noreferrer">Research details in CV ↗</a>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <!-- Organizations Section -->
-    <section id="organizations" class="organizations">
-        <div class="container">
-            <h2 class="section-title">Organizations & Leadership</h2>
-            <div class="org-grid">
-                <div class="org-card">
-                    <div class="org-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="org-content">
-                        <h3>Head of Aspiration Commission</h3>
-                        <h4>Student Representative House Undergraduate Informatics Major</h4>
-                        <p class="org-period">2020 - 2023</p>
-                        <p class="org-description">
-                            Led the aspiration committee at School of Computer Science Telkom University, 
-                            demonstrating strong leadership and organizational skills.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="org-card">
-                    <div class="org-icon">
-                        <i class="fas fa-theater-masks"></i>
-                    </div>
-                    <div class="org-content">
-                        <h3>Design and Documentation</h3>
-                        <h4>Teater Jebew 808</h4>
-                        <p class="org-period">2016 - 2019</p>
-                        <p class="org-description">
-                            Contributed to theater production through design and documentation work, 
-                            showcasing creative and organizational abilities.
-                        </p>
-                    </div>
-                </div>
-            </div>
+    <section id="work" aria-labelledby="work-heading">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">04 / Open source</div>
+          <div>
+            <h2 id="work-heading">Selected public projects.</h2>
+            <p class="section-copy">Public work cross-checked against the GitHub evidence snapshot and my LinkedIn project history—focused on developer tooling, backend architecture, full-stack frameworks, and practical AI.</p>
+          </div>
         </div>
+
+        <div class="projects">
+          <a class="project" href="https://github.com/kamil5b/db2toon" target="_blank" rel="noreferrer" aria-label="Open db2toon on GitHub">
+            <div class="project-top"><span class="project-badge">AI context · Database tooling</span><span class="arrow" aria-hidden="true">↗</span></div>
+            <h3>db2toon</h3>
+            <p>A Go CLI that turns existing database schemas into compact, human-readable TOON context for developers and AI coding agents. It supports MCP and multiple database engines, helping reduce schema-context overhead compared with raw SQL or verbose interchange formats.</p>
+            <div class="project-meta"><span>Go</span><span>MCP</span><span>multi-database</span></div>
+            <div class="chip-row"><span class="chip">PostgreSQL</span><span class="chip">MySQL / MariaDB</span><span class="chip">SQLite</span><span class="chip">DuckDB</span><span class="chip">CockroachDB</span></div>
+          </a>
+
+          <a class="project" href="https://github.com/kamil5b/clean-go-vite-react" target="_blank" rel="noreferrer" aria-label="Open Clean Fullstack Go Vite React Boilerplate on GitHub">
+            <div class="project-top"><span class="project-badge">Go · Full-stack architecture</span><span class="arrow" aria-hidden="true">↗</span></div>
+            <h3>Clean Fullstack Go + Vite + React</h3>
+            <p>A production-oriented full-stack boilerplate that embeds a Vite + React frontend into a Go binary while keeping frontend and backend boundaries explicit. Designed to ship as one binary early, then detach into API + CDN deployment later without rewriting the product architecture.</p>
+            <div class="project-meta"><span>single binary</span><span>go:embed</span><span>API-first</span></div>
+            <div class="chip-row"><span class="chip">Go</span><span class="chip">React</span><span class="chip">Vite</span><span class="chip">Tailwind CSS</span><span class="chip">Clean Architecture</span></div>
+          </a>
+
+          <a class="project" href="https://github.com/kamil5b/go-pste-monolith" target="_blank" rel="noreferrer" aria-label="Open Go PSTE modular monolith on GitHub">
+            <div class="project-top"><span class="project-badge">Architecture · Modular monolith</span><span class="arrow" aria-hidden="true">↗</span></div>
+            <h3>Go PSTE Modular Monolith</h3>
+            <p>An open-source Go architecture built around Plug, Swap, Toggle, Extract: swap infrastructure implementations without touching business logic, toggle features through configuration, and keep domain modules extractable when microservices are actually justified.</p>
+            <div class="project-meta"><span>HTTP + gRPC</span><span>feature flags</span><span>80–100% core test coverage</span></div>
+            <div class="chip-row"><span class="chip">Go</span><span class="chip">Echo / Gin / Fiber</span><span class="chip">PostgreSQL / MongoDB</span><span class="chip">RabbitMQ / Redpanda</span><span class="chip">S3 / GCS</span></div>
+          </a>
+
+          <a class="project" href="https://github.com/kamil5b/bev-fs" target="_blank" rel="noreferrer" aria-label="Open bev-fs on GitHub">
+            <div class="project-top"><span class="project-badge">TypeScript · Full-stack framework</span><span class="arrow" aria-hidden="true">↗</span></div>
+            <h3>bev-fs</h3>
+            <p>A Bun + Elysia + Vue full-stack framework built around deployment freedom and end-to-end TypeScript safety, with directory-based API/page routing, automatic route discovery, middleware composition, scaffolding templates, and single-port production deployment.</p>
+            <div class="project-meta"><span>framework + CLI</span><span>no platform lock-in</span><span>single-port deploy</span></div>
+            <div class="chip-row"><span class="chip">Bun</span><span class="chip">Elysia</span><span class="chip">Vue 3</span><span class="chip">TypeScript</span><span class="chip">Tailwind optional</span></div>
+          </a>
+
+          <a class="project" href="https://github.com/kamil5b/cauang" target="_blank" rel="noreferrer" aria-label="Open currency recognition mobile app on GitHub">
+            <div class="project-top"><span class="project-badge">Accessibility · Vision-language AI</span><span class="arrow" aria-hidden="true">↗</span></div>
+            <h3>MacaUang · Camera Money Detector</h3>
+            <p>A Flutter mobile app that combines the device camera, Claude 3.5 Haiku vision-language capabilities, and text-to-speech to identify banknotes and announce denominations—designed to support visually impaired users.</p>
+            <div class="project-meta"><span>mobile AI</span><span>camera → VLM → speech</span><span>accessibility</span></div>
+            <div class="chip-row"><span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">Claude VLM</span><span class="chip">Text-to-Speech</span><span class="chip">Mobile</span></div>
+          </a>
+
+          <a class="project" href="https://github.com/kamil5b/kamil-boilerplate" target="_blank" rel="noreferrer" aria-label="Open NextJS Fullstack Monolith on GitHub">
+            <div class="project-top"><span class="project-badge">Next.js · ERP-ready monolith</span><span class="arrow" aria-hidden="true">↗</span></div>
+            <h3>NextJS Fullstack Monolith</h3>
+            <p>An MVP-oriented monolith for small teams and solo engineers with explicit server/client/shared boundaries, a Handler → Service → Repository backend, service-owned transactions, shared API contracts and RBAC, JWT auth, and S3-compatible file uploads.</p>
+            <div class="project-meta"><span>3-layer backend</span><span>shared contracts</span><span>single deployment</span></div>
+            <div class="chip-row"><span class="chip">Next.js</span><span class="chip">React 19</span><span class="chip">PostgreSQL</span><span class="chip">Tailwind CSS v4</span><span class="chip">shadcn/ui</span><span class="chip">RBAC</span></div>
+          </a>
+
+          <a class="project" href="https://github.com/kamil5b/go-nl2query-lib" target="_blank" rel="noreferrer" aria-label="Open go-nl2query-lib on GitHub">
+            <div class="project-top"><span class="project-badge">Applied AI · Developer library</span><span class="arrow" aria-hidden="true">↗</span></div>
+            <h3>Natural language → query</h3>
+            <p>A Go library for translating plain-language requests into SQL or NoSQL queries using embeddings and LLM-assisted generation—part of a broader focus on LLM APIs, structured context, and AI-powered developer tooling.</p>
+            <div class="project-meta"><span>Go</span><span>LLM API</span><span>embeddings</span></div>
+            <div class="chip-row"><span class="chip">SQL / NoSQL</span><span class="chip">Embeddings</span><span class="chip">LLM-powered tooling</span></div>
+          </a>
+
+          <a class="project" href="https://github.com/kamil5b/jkt48_nlp" target="_blank" rel="noreferrer" aria-label="Open JKT48 NLP Bot on GitHub">
+            <div class="project-top"><span class="project-badge">NLP · Social automation</span><span class="arrow" aria-hidden="true">↗</span></div>
+            <h3>JKT48 NLP Bot</h3>
+            <p>A Python/Tweepy social-media analysis bot that automated NLP tasks around public JKT48 content, including sentiment analysis, emotion analysis, and word-cloud generation.</p>
+            <div class="project-meta"><span>2023</span><span>social NLP</span><span>automation</span></div>
+            <div class="chip-row"><span class="chip">Python</span><span class="chip">Tweepy</span><span class="chip">NLP</span><span class="chip">Sentiment Analysis</span><span class="chip">Emotion Analysis</span></div>
+          </a>
+        </div>
+
+        <p class="section-copy" style="margin-top:1.25rem">More public experiments include PostgreSQL tooling, KNN-from-scratch work in Go, Flutter prototypes, and a Telegram-to-Discord live notification bridge. The GitHub profile has the full public history.</p>
+      </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Word Syllabification for Indonesian Language using Transformer</h3>
-                        <p class="project-period">2023</p>
-                        <p><strong>Overview:</strong> Syllabification is the process of breaking words into a series of syllables, essential for NLP applications such as speech recognition, text-to-speech, rhyme detection, and more. This research focuses on Indonesian syllabification following the General Guidelines for Indonesian Language Spelling (PUEBI).</p>
-                        <p><strong>Methodology:</strong> Developed a deep learning model using Transformer architecture combined with a custom Syllable Tagging tokenizer to handle long contextual dependencies and improve syllable boundary detection accuracy.</p>
-                        <p><strong>Custom Syllable Tagging Tokenizer:</strong> Implemented a character-level vectorization approach where each character is first converted to a numeric vector (e.g., m=23, a=9, k=4, n=7). Then, syllable boundaries are tagged with binary labels: 1 marks the start of a syllable, 0 marks syllable continuation. For example: "makan" (ma-kan) has character vectors [23,9,4,9,7] and syllable tags [1,0,1,0,0], resulting in binary 10100. Similarly, "media" (me-di-a) has character vectors [5,2,7,4,3] and syllable tags [1,0,1,0,1], resulting in binary 10101. This innovative tokenization method enables the Transformer model to efficiently learn and predict syllable boundaries by understanding character-level patterns combined with explicit syllable position markers.</p>
-                        <p><strong>Corpus & Evaluation:</strong> Trained on a comprehensive corpus combining "50k KBBI 5-k fold" and "103k Named Entity 5-k fold" datasets using the custom Syllable Tagging tokenizer. Evaluated using Word Error Rate (WER) metric.</p>
-                        <p><strong>Results:</strong> Achieved 3.68% WER, improving upon the previous best deep learning model's 3.75% WER. The model demonstrates universal applicability for Indonesian words with consistent performance across both formal and named entity categories.</p>
-                        <p><strong>Significance:</strong> Established as the state-of-the-art deep learning model for Indonesian syllabification at the time of publication, presented at the 2023 International Seminar on Intelligent Technology and Its Applications (ISITIA). DOI: 10.1109/ISITIA59021.2023.10221089</p>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>JKT48 Twitter Reply and Retweet Sentiment Analysis and Emotion Detection</h3>
-                        <p class="project-period">2022-2023</p>
-                        <p>Developed comprehensive sentiment analysis and emotion detection system for JKT48 Twitter interactions using Python, tweepy, IndoBERT for sentiment analysis, and IndoBERT for emotion detection.</p>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-box"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>bev-fs — Bun · Elysia · Vue Fullstack Framework</h3>
-                        <p>A fullstack TypeScript framework built with Bun, Elysia, and Vue 3 focused on developer experience, type safety, and deployment freedom. Features directory-based routing, end-to-end types, and single-port deployment.</p>
-                        <p><a href="https://github.com/kamil5b/bev-fs">GitHub: kamil5b/bev-fs</a></p>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-code-branch"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Go-PSTE-Boilerplate</h3>
-                        <p>A Go modular monolith framework implementing PSTE (Plug, Swap, Toggle, Extract) with pluggable HTTP frameworks, storage backends, worker queues, and feature flags.</p>
-                        <p><a href="https://github.com/kamil5b/go-pste-monolith">GitHub: kamil5b/go-pste-monolith</a></p>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-layer-group"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>NextJS Fullstack Monolith — Eksplorasi Arsitektur MVP</h3>
-                        <p>MVP fullstack monolith based on NextJS with a clear src/server, src/client, src/shared structure and a minimal routing layer. Focused on simplicity, maintainability, and shared contracts between frontend and backend.</p>
-                        <p><a href="https://lnkd.in/g9mMB6sS">More info / writeup</a></p>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fab fa-telegram"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Telegram to Discord JKT48 Update Developer</h3>
-                        <p class="project-period">2023</p>
-                        <p>Created automated system using Python and Telethon to grab messages from Telegram JKT48 Updater and forward them to Discord API, enabling seamless information flow between different social media channels.</p>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-truck"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Sean Alfa Logistic ERP System</h3>
-                        <p class="project-period">2025</p>
-                        <p>Developed comprehensive ERP system using Fullstack NextJS including Cost Management System, Purchasing Order System, and Accounting System to streamline business operations.</p>
-                    </div>
-                </div>
-            </div>
+    <section id="private-work" aria-labelledby="private-heading">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">03 / Production scope</div>
+          <div>
+            <h2 id="private-heading">Private work, summarized responsibly.</h2>
+            <p class="section-copy">The evidence includes significant private-repository activity. The details below intentionally describe engineering scope and technology patterns only—without repository names, links, internal product names, or commit-level details.</p>
+          </div>
         </div>
+
+        <div class="privacy-banner">
+          <span><strong>51 private repositories</strong> are represented only as aggregate experience in this portfolio.</span>
+          <span class="lock">[ names redacted ]</span>
+        </div>
+
+        <div class="private-grid">
+          <article class="private-card">
+            <div class="private-icon">PRIVATE / BACKEND</div>
+            <h3>Production APIs & worker systems</h3>
+            <p>High-activity Go codebases covering API services, background workers, PostgreSQL-backed workflows, service integration, build automation, and containerized deployment.</p>
+            <div class="chip-row"><span class="chip">Go</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span><span class="chip">Make</span><span class="chip">Shell</span></div>
+          </article>
+
+          <article class="private-card">
+            <div class="private-icon">PRIVATE / FULL-STACK</div>
+            <h3>Operational dashboards & product interfaces</h3>
+            <p>Full-stack web applications, ERP-oriented workflows, and internal dashboards focused on operations, reporting, configurable product behavior, and production-grade user interfaces.</p>
+            <div class="chip-row"><span class="chip">TypeScript</span><span class="chip">Next.js</span><span class="chip">TanStack Start</span><span class="chip">ERP</span><span class="chip">Metabase</span><span class="chip">Docker</span></div>
+          </article>
+
+          <article class="private-card">
+            <div class="private-icon">PRIVATE / PLATFORM</div>
+            <h3>Platform services & integrations</h3>
+            <p>Infrastructure-adjacent work including messaging gateways, shared service contracts, feature-control tooling, automation, and systems designed to support multiple internal applications.</p>
+            <div class="chip-row"><span class="chip">Go</span><span class="chip">TypeScript</span><span class="chip">Protobuf</span><span class="chip">Automation</span></div>
+          </article>
+
+          <article class="private-card">
+            <div class="private-icon">PRIVATE / DATA & AI</div>
+            <h3>AI/ML, document intelligence & assisted workflows</h3>
+            <p>Applied ML and LLM-powered systems spanning model APIs, agentic workflows, document understanding, transformer-based models, classical gradient boosting, and cloud-hosted experimentation.</p>
+            <div class="chip-row"><span class="chip">AWS SageMaker</span><span class="chip">XGBoost</span><span class="chip">TensorFlow</span><span class="chip">Transformers</span><span class="chip">Deep Learning</span><span class="chip">Donut VLM</span><span class="chip">LangGraph</span><span class="chip">pandas</span><span class="chip">NumPy</span></div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Skills & Technologies</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Programming Languages</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">Go</span>
-                        <span class="skill-tag">C++</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">TypeScript</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Backend Development</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">API Development</span>
-                        <span class="skill-tag">Database Design</span>
-                        <span class="skill-tag">System Architecture</span>
-                        <span class="skill-tag">Clean Architecture</span>
-                        <span class="skill-tag">AWS Lambda</span>
-                        <span class="skill-tag">Claude AI Integration</span>
-                        <span class="skill-tag">ERP Systems</span>
-                        <span class="skill-tag">NextJS</span>
-                        <span class="skill-tag">Fullstack Development</span>
-                        <span class="skill-tag">Gin Framework</span>
-                        <span class="skill-tag">gRPC</span>
-                        <span class="skill-tag">Protobuf</span>
-                        <span class="skill-tag">MariaDB</span>
-                        <span class="skill-tag">GORM</span>
-                        <span class="skill-tag">Redis</span>
-                        <span class="skill-tag">Apache Kafka</span>
-                        <span class="skill-tag">Keycloak (OIDC)</span>
-                        <span class="skill-tag">TM Forum Standards</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Data Science & AI</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">Machine Learning</span>
-                        <span class="skill-tag">Natural Language Processing</span>
-                        <span class="skill-tag">Data Analysis</span>
-                        <span class="skill-tag">Database Administration</span>
-                        <span class="skill-tag">XGBoost</span>
-                        <span class="skill-tag">AWS SageMaker</span>
-                        <span class="skill-tag">LangChain</span>
-                        <span class="skill-tag">LangGraph</span>
-                        <span class="skill-tag">Prompt Engineering</span>
-                        <span class="skill-tag">IndoBERT</span>
-                        <span class="skill-tag">NLTK</span>
-                        <span class="skill-tag">Metabase</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Soft Skills</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">Leadership</span>
-                        <span class="skill-tag">Communication</span>
-                        <span class="skill-tag">Team Collaboration</span>
-                        <span class="skill-tag">Problem Solving</span>
-                    </div>
-                </div>
-            </div>
+    <section id="stack" aria-labelledby="stack-heading">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">06 / Stack signal</div>
+          <div>
+            <h2 id="stack-heading">Technology usage across repositories.</h2>
+            <p class="section-copy">Repository counts from the evidence snapshot are a signal of repeated exposure, not a claim that every repository has equal depth or production importance. Additional technologies supplied as experience are listed separately below without invented repository counts.</p>
+          </div>
         </div>
+
+        <div class="stack-panel" role="list" aria-label="Technology repository counts">
+          <div class="stack-row" role="listitem"><div class="stack-name">Go</div><div class="bar"><span style="--w:100%"></span></div><div class="stack-count">44 repos</div></div>
+          <div class="stack-row" role="listitem"><div class="stack-name">Shell</div><div class="bar"><span style="--w:68%"></span></div><div class="stack-count">30 repos</div></div>
+          <div class="stack-row" role="listitem"><div class="stack-name">CSS</div><div class="bar"><span style="--w:64%"></span></div><div class="stack-count">28 repos</div></div>
+          <div class="stack-row" role="listitem"><div class="stack-name">HTML</div><div class="bar"><span style="--w:61%"></span></div><div class="stack-count">27 repos</div></div>
+          <div class="stack-row" role="listitem"><div class="stack-name">Dockerfile</div><div class="bar"><span style="--w:61%"></span></div><div class="stack-count">27 repos</div></div>
+          <div class="stack-row" role="listitem"><div class="stack-name">JavaScript</div><div class="bar"><span style="--w:59%"></span></div><div class="stack-count">26 repos</div></div>
+          <div class="stack-row" role="listitem"><div class="stack-name">TypeScript</div><div class="bar"><span style="--w:52%"></span></div><div class="stack-count">23 repos</div></div>
+          <div class="stack-row" role="listitem"><div class="stack-name">Makefile</div><div class="bar"><span style="--w:39%"></span></div><div class="stack-count">17 repos</div></div>
+          <div class="stack-row" role="listitem"><div class="stack-name">Python</div><div class="bar"><span style="--w:25%"></span></div><div class="stack-count">11 repos</div></div>
+        </div>
+
+        <div class="tech-matrix" aria-label="Additional technology experience">
+          <article class="tech-group">
+            <div class="tech-group-label">AI / ML</div>
+            <h3>Modeling & deep learning</h3>
+            <p>Experience across classical ML, neural architectures, document intelligence, and transformer-based systems.</p>
+            <div class="chip-row"><span class="chip">XGBoost</span><span class="chip">TensorFlow</span><span class="chip">Transformers</span><span class="chip">Deep Learning</span><span class="chip">Donut VLM</span><span class="chip">NLP</span><span class="chip">Sentiment Analysis</span><span class="chip">pandas</span><span class="chip">NumPy</span></div>
+          </article>
+          <article class="tech-group">
+            <div class="tech-group-label">LLM systems</div>
+            <h3>LLM-powered products & tools</h3>
+            <p>Building AI features and developer tools around model APIs, retrieval/context patterns, and graph-based agent workflows.</p>
+            <div class="chip-row"><span class="chip">LLM API</span><span class="chip">LangGraph</span><span class="chip">Embeddings</span><span class="chip">AI Agents</span><span class="chip">LLM-powered Products</span><span class="chip">MCP</span><span class="chip">Claude VLM</span></div>
+          </article>
+          <article class="tech-group">
+            <div class="tech-group-label">Cloud / ML platform</div>
+            <h3>Managed model workflows</h3>
+            <p>Cloud-oriented machine-learning workflows including model experimentation, training, deployment, feature/data preparation, and supporting data pipelines.</p>
+            <div class="chip-row"><span class="chip">AWS SageMaker</span><span class="chip">Python</span><span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">Model Serving</span><span class="chip">Data Pipelines</span></div>
+          </article>
+          <article class="tech-group">
+            <div class="tech-group-label">Backend / integrations</div>
+            <h3>Service architecture & external platforms</h3>
+            <p>Production backend and integration work across synchronous APIs, gRPC contracts, event-driven processing, identity, caching, and third-party platform integrations.</p>
+            <div class="chip-row"><span class="chip">Go</span><span class="chip">Gin</span><span class="chip">gRPC</span><span class="chip">Protobuf</span><span class="chip">Apache Kafka</span><span class="chip">Redis</span><span class="chip">MariaDB</span><span class="chip">Keycloak / OIDC</span><span class="chip">REST APIs</span><span class="chip">Clean Architecture</span><span class="chip">TM Forum</span></div>
+          </article>
+          <article class="tech-group">
+            <div class="tech-group-label">Product engineering</div>
+            <h3>Modern web & enterprise systems</h3>
+            <p>Full-stack TypeScript product development spanning modern React meta-frameworks, ERP-style operational systems, analytics dashboards, and business reporting.</p>
+            <div class="chip-row"><span class="chip">TanStack Start</span><span class="chip">Next.js</span><span class="chip">React</span><span class="chip">Vue 3</span><span class="chip">Bun</span><span class="chip">Elysia</span><span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">TypeScript</span><span class="chip">ERP</span><span class="chip">Metabase</span></div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>kamilhaykal240801@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-github"></i>
-                        <span>kamil5b</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Bandung, Indonesia</span>
-                    </div>
-                </div>
-                <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
+    <section aria-labelledby="approach-heading">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">07 / Approach</div>
+          <div><h2 id="approach-heading">A practical engineering bias.</h2></div>
         </div>
+        <div class="principles">
+          <article class="principle"><h3>Small surface area</h3><p>Prefer understandable systems, explicit dependencies, and operational simplicity over unnecessary framework weight.</p></article>
+          <article class="principle"><h3>Build the tool you need</h3><p>When a workflow is repetitive or awkward, I tend to turn it into a CLI, generator, gateway, library, or small internal platform.</p></article>
+          <article class="principle"><h3>Cross the boundary</h3><p>Backend is the center of gravity, but I’m comfortable moving into TypeScript UI work, ERP workflows, cloud ML infrastructure, model integration, and AI product prototyping when the product needs it.</p></article>
+          <article class="principle"><h3>Learn from fundamentals</h3><p>Public projects range from algorithms and ML experiments to full-stack frameworks and DB tooling—evidence of learning by implementing, testing, and shipping.</p></article>
+        </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Kamil. All rights reserved.</p>
+    <section aria-labelledby="contact-heading">
+      <div class="wrap">
+        <div class="contact-card">
+          <div class="eyebrow">Open source profile</div>
+          <h2 id="contact-heading">Explore the code behind the public work.</h2>
+          <p>For source, experiments, and developer tools, explore GitHub. For professional history and connections, visit LinkedIn; for the complete formal employment and education timeline, use the CV. Based in Bandung, Indonesia.</p>
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="mailto:kamilhaykal240801@gmail.com">kamilhaykal240801@gmail.com</a>
+            <a class="btn btn-secondary" href="https://github.com/kamil5b" target="_blank" rel="noreferrer">github.com/kamil5b ↗</a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/in/kamil5b" target="_blank" rel="noreferrer">linkedin.com/in/kamil5b ↗</a>
+            <a class="btn btn-secondary" href="https://kamil5b.github.io/resume/index-formal" target="_blank" rel="noreferrer">Formal CV ↗</a>
+          </div>
         </div>
-    </footer>
+      </div>
+    </section>
+  </main>
 
-    <script src="script.js"></script>
+  <footer>
+    <div class="wrap footer-row">
+      <span>Portfolio informed by a GitHub engineering evidence snapshot (7 Aug 2026), the public formal CV, and LinkedIn project + professional-experience exports.</span>
+      <span>Private repository names and sensitive implementation details intentionally omitted.</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn?.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.textContent = open ? '×' : '☰';
+    });
+    navLinks?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn?.setAttribute('aria-expanded', 'false');
+      if (menuBtn) menuBtn.textContent = '☰';
+    }));
+  </script>
 </body>
-</html> 
+</html>
