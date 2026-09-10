@@ -1,0 +1,58 @@
+---
+import research from '../content/research.json';
+---
+<section id="research" aria-labelledby="research-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03 / Research</div>
+      <div>
+        <h2 id="research-heading">Published work in Indonesian NLP.</h2>
+        <p class="section-copy">My undergraduate research applied Transformer-based deep learning to Indonesian word syllabification and was published at ISITIA 2023.</p>
+      </div>
+    </div>
+
+    <article class="research-card">
+      <div class="research-label">{research.label}</div>
+      <h3>{research.title}</h3>
+      <p>{research.description}</p>
+      <div class="research-meta">
+        <span>{research.authors}</span>
+        <span>{research.venue}</span>
+        <span>DOI: {research.doi}</span>
+      </div>
+      <div class="chip-row">
+        {research.chips.map((chip) => (
+          <span class="chip">{chip}</span>
+        ))}
+      </div>
+      <div class="research-actions no-print">
+        <a class="btn btn-primary" href={research.doiUrl} target="_blank" rel="noreferrer">Open DOI ↗</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<style>
+  .research-card {
+    position: relative; overflow: hidden; padding: clamp(28px, 4vw, 44px); border: 1px solid rgba(140,247,197,.28);
+    border-radius: 22px; background: linear-gradient(145deg, rgba(140,247,197,.065), rgba(165,180,252,.035));
+  }
+  .research-card::after { content: "Transformer"; position: absolute; right: 24px; top: 18px; color: rgba(255,255,255,.035); font-size: clamp(52px, 9vw, 104px); font-weight: 850; letter-spacing: -.06em; pointer-events: none; }
+  .research-label { color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+  .research-card h3 { position: relative; margin: 22px 0 12px; max-width: 850px; font-size: clamp(28px, 4vw, 42px); line-height: 1.08; letter-spacing: -.035em; }
+  .research-card p { position: relative; max-width: 850px; margin: 0; color: var(--muted); }
+  .research-meta { position: relative; display: flex; gap: 12px 22px; flex-wrap: wrap; margin-top: 20px; color: #aeb9b5; font-size: 13px; }
+  .research-actions { position: relative; display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
+
+  @media print {
+    .research-card {
+      padding: 5mm; border-color: #aeb7c2; background: #ffffff !important;
+      box-shadow: none !important; break-inside: avoid; page-break-inside: avoid;
+    }
+    .research-card::after { display: none; }
+    .research-card h3 { margin: 3mm 0 2mm; font-size: 16pt; }
+    .research-card p, .research-meta { color: #4b5563 !important; }
+    .research-actions { margin-top: 3mm; }
+    .research-actions .btn { padding: 1mm 0; border: 0; background: transparent !important; font-size: 8pt; }
+  }
+</style>

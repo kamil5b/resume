@@ -1,0 +1,70 @@
+---
+import projects from '../content/projects.json';
+---
+<section id="private-work" aria-labelledby="private-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03 / Production scope</div>
+      <div>
+        <h2 id="private-heading">Private work, summarized responsibly.</h2>
+        <p class="section-copy">The evidence includes significant private-repository activity. The details below intentionally describe engineering scope and technology patterns only—without repository names, links, internal product names, or commit-level details.</p>
+      </div>
+    </div>
+
+    <div class="privacy-banner">
+      <span><strong>{projects.privateCount}</strong>{projects.privateCountText}</span>
+      <span class="lock">[ names redacted ]</span>
+    </div>
+
+    <div class="private-grid">
+      {projects.privateScope.map((card) => (
+        <article class="private-card">
+          <div class="private-icon">{card.icon}</div>
+          <h3>{card.title}</h3>
+          <p>{card.description}</p>
+          <div class="chip-row">
+            {card.chips.map((chip) => (
+              <span class="chip">{chip}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .privacy-banner {
+    display: flex; justify-content: space-between; gap: 24px; align-items: center; margin: 0 0 20px; padding: 18px 20px;
+    border: 1px solid rgba(165,180,252,.25); border-radius: 15px; background: rgba(165,180,252,.055); color: #c7ceef; font-size: 14px;
+  }
+  .lock { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--accent-2); font-size: 12px; white-space: nowrap; }
+  .private-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .private-card {
+    position: relative; border: 1px solid var(--line); border-radius: 18px;
+    background: linear-gradient(150deg, rgba(255,255,255,.035), rgba(255,255,255,.012));
+    padding: 25px; min-height: 230px;
+  }
+  .private-card h3 { margin: 26px 0 9px; font-size: 21px; letter-spacing: -.02em; }
+  .private-card p { margin: 0; color: var(--muted); font-size: 14px; }
+  .private-icon { color: var(--accent-2); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+
+  @media (max-width: 900px) {
+    .private-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 680px) {
+    .privacy-banner { align-items: flex-start; flex-direction: column; }
+  }
+  @media print {
+    .private-grid { grid-template-columns: repeat(2, 1fr); gap: 3mm; }
+    .private-card {
+      padding: 4mm; min-height: 0; border-color: #cbd5e1 !important;
+      background: #ffffff !important; box-shadow: none !important;
+      break-inside: avoid; page-break-inside: avoid;
+    }
+    .private-card h3 { font-size: 12pt; }
+    .private-card p { color: #4b5563 !important; font-size: 8.25pt; }
+    .private-icon { color: #374151 !important; }
+    .privacy-banner { border-color: #cbd5e1 !important; background: #ffffff !important; color: #4b5563 !important; }
+  }
+</style>

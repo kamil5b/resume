@@ -1,0 +1,77 @@
+[
+  {
+    "date": "Nov 2023 — Present",
+    "org": "REDIKRU · Full-time",
+    "location": "Jakarta · Hybrid",
+    "title": "Backend → Data & AI → Technical Leadership",
+    "description": "Expanded from core backend ownership into applied data/AI and technical leadership while continuing to contribute across production systems, MVP delivery, and R&D.",
+    "roles": [
+      {
+        "title": "Technical Lead",
+        "period": "Oct 2025 — Present",
+        "description": "Lead a 4-member cross-functional team delivering full-stack MVPs and R&D initiatives, oversee Data & AI engineering alongside backend work, and coordinate technical alignment, task distribution, and delivery."
+      },
+      {
+        "title": "Data Scientist",
+        "period": "Aug 2024 — Present",
+        "description": "Gather and analyze business data, build and deploy ML models, work with LLMs/VLMs through prompting and fine-tuning, and deploy data/ML solutions with AWS SageMaker and Lambda using Python and SQL."
+      },
+      {
+        "title": "Back End Developer",
+        "period": "Nov 2023 — Present",
+        "description": "Core backend engineer across production products from MVP to live deployment. Built Go/Gin server-worker systems, TypeScript services, a B2C maritime job-matching platform, and B2B ERP systems covering crew, vessel, contracts, LMS, attendance, and payroll."
+      }
+    ],
+    "impacts": [
+      "**Delivery:** 5 web ERP products + 2 mobile ERP applications for client companies; Clean Architecture, TDD, API versioning, database architecture, Redis caching, and Asynq background processing.",
+      "**Additional reported impact:** reduced production costs by 70% through LLM API integrations and improved team productivity through ML, data engineering, and workflow optimization."
+    ],
+    "chips": ["Go", "Gin", "TypeScript", "ERP", "Redis", "Asynq", "AWS SageMaker", "AWS Lambda", "LLM / VLM", "Python", "SQL", "Metabase"]
+  },
+  {
+    "date": "Mar 2026 — Jun 2026",
+    "org": "Technova Solusi · Freelance",
+    "location": "Backend Engineer",
+    "title": "Telecom provisioning & integration microservice",
+    "description": "Built and maintained a Go microservice for ISP service provisioning, order management, and customer operations, acting as an integration layer between internal systems and external platforms. Designed a shared business layer serving REST and gRPC clients with Clean Architecture / Port & Adapter principles.",
+    "impacts": [
+      "**Integration scope:** 10+ external APIs spanning payments, OIDC authentication, media/services, WhatsApp omnichannel, and telecom providers; event-driven processing with Kafka, Redis-backed OTP/token workflows, signed webhook verification, and TM Forum-aligned service APIs."
+    ],
+    "chips": ["Go", "Gin", "gRPC", "Protobuf", "MariaDB", "GORM", "Redis", "Apache Kafka", "Keycloak / OIDC", "REST APIs", "Clean Architecture", "TM Forum"]
+  },
+  {
+    "date": "Apr 2025 — Oct 2025",
+    "org": "Technova Integrasi Solusi · Freelance",
+    "location": "AI Engineer · Remote",
+    "title": "From LangGraph prototype to production Go AI service",
+    "description": "Built an AI chatbot agent in Python with LangGraph, then migrated and reimplemented the solution in Go for production readiness. Delivered the AI solution end-to-end from experimentation through implementation and collaborated directly with client stakeholders.",
+    "chips": ["LangGraph", "Python", "Go", "AI Agents", "LLM API", "Client Delivery"]
+  },
+  {
+    "date": "Jun 2023 — Jul 2023",
+    "org": "bank bjb · Internship",
+    "location": "DPLK Operations · On-site",
+    "title": "Data visualization in financial operations",
+    "description": "Supported DPLK operational work through data visualization and website review, adding financial-services exposure to an engineering and data-focused background.",
+    "chips": ["Data Visualization", "Analysis", "Website Review"]
+  },
+  {
+    "date": "Feb 2021 — Feb 2023",
+    "org": "Telkom University",
+    "location": "Teaching, laboratory & NLP roles",
+    "title": "Teaching foundations and NLP research",
+    "description": "Served across programming, data structures, software testing, object-oriented programming, and NLP teaching roles. Guided classes in Go, Java, C++, Python/NLTK, Maven, Jira, and Katalon; also coordinated OOP practicum assistants before supporting an NLP course as an assistant lecturer.",
+    "impacts": [
+      "**Leadership foundation:** coordinated practicum responsibilities and guided multiple classes before moving into professional engineering leadership."
+    ],
+    "chips": ["Go", "Java", "C++", "Python", "NLTK", "NLP", "Software Testing", "Teaching"]
+  },
+  {
+    "date": "Jun 2021 — Jan 2022",
+    "org": "eKopz · Internship",
+    "location": "Back End Developer",
+    "title": "Early production backend experience",
+    "description": "Worked on backend systems for a digital cooperative platform, including API development and database-oriented engineering for financial-service workflows.",
+    "chips": ["Backend", "API Development", "Database Design"]
+  }
+]

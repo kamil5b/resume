@@ -1,0 +1,70 @@
+---
+import projects from '../content/projects.json';
+---
+<section id="work" aria-labelledby="work-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04 / Open source</div>
+      <div>
+        <h2 id="work-heading">Selected public projects.</h2>
+        <p class="section-copy">Public work cross-checked against the GitHub evidence snapshot and my LinkedIn project history—focused on developer tooling, backend architecture, full-stack frameworks, and practical AI.</p>
+      </div>
+    </div>
+
+    <div class="projects">
+      {projects.openSource.map((project) => (
+        <a class="project" href={project.url} target="_blank" rel="noreferrer" aria-label={`Open ${project.name} on GitHub`}>
+          <div class="project-top"><span class="project-badge">{project.badge}</span><span class="arrow no-print" aria-hidden="true">↗</span></div>
+          <h3>{project.name}</h3>
+          <p>{project.description}</p>
+          <div class="project-meta">
+            {project.meta.map((m) => (
+              <span>{m}</span>
+            ))}
+          </div>
+          <div class="chip-row">
+            {project.chips.map((chip) => (
+              <span class="chip">{chip}</span>
+            ))}
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <p class="section-copy" style="margin-top:1.25rem">{projects.privateNote}</p>
+  </div>
+</section>
+
+<style>
+  .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .project { position: relative; padding: 28px; min-height: 330px; display: flex; flex-direction: column; overflow: hidden; transition: transform .18s ease, border-color .18s ease; border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(150deg, rgba(255,255,255,.035), rgba(255,255,255,.012)); }
+  .project:hover { transform: translateY(-3px); border-color: #405058; }
+  .project::after {
+    content: ""; position: absolute; width: 170px; height: 170px; right: -90px; bottom: -90px; border-radius: 999px;
+    background: radial-gradient(circle, rgba(140,247,197,.12), transparent 68%); pointer-events: none;
+  }
+  .project-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .project-badge { color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
+  .arrow { font-size: 23px; color: #76827e; transition: transform .18s ease, color .18s ease; }
+  .project:hover .arrow { transform: translate(3px,-3px); color: var(--accent); }
+  .project h3 { position: relative; margin: 40px 0 11px; font-size: 28px; letter-spacing: -.035em; }
+  .project p { position: relative; margin: 0; color: var(--muted); max-width: 580px; }
+  .project .chip-row { position: relative; margin-top: auto; padding-top: 28px; }
+  .project-meta { display: flex; gap: 16px; margin-top: 18px; color: #7d8985; font-size: 12px; }
+
+  @media (max-width: 900px) {
+    .projects { grid-template-columns: 1fr; }
+  }
+  @media print {
+    .projects { grid-template-columns: repeat(2, 1fr); gap: 3mm; }
+    .project {
+      padding: 4mm; min-height: 0; border-color: #cbd5e1 !important;
+      background: #ffffff !important; box-shadow: none !important;
+      transform: none !important; break-inside: avoid; page-break-inside: avoid;
+    }
+    .project h3 { font-size: 12pt; }
+    .project p { color: #4b5563 !important; font-size: 8.25pt; }
+    .project-badge { color: #374151 !important; }
+    .project-meta span { padding: 1mm 2mm; border-color: #cbd5e1 !important; background: #ffffff !important; color: #374151 !important; font-size: 7pt; }
+  }
+</style>

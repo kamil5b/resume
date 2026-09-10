@@ -1,0 +1,10 @@
+{
+  "label": "IEEE Conference Publication · ISITIA 2023",
+  "title": "Word Syllabification for Indonesian Language using Transformer",
+  "description": "Developed a character-level syllable-tagging approach with a Transformer architecture for Indonesian syllabification. The work used KBBI and named-entity corpora and reported a 3.68% Word Error Rate, improving on the 3.75% result cited as the previous best deep-learning model in the project evaluation.",
+  "authors": "Muhammad Haykal Kamil · Suyanto · Mochammad Arif Bijaksana",
+  "venue": "2023 International Seminar on Intelligent Technology and Its Applications",
+  "doi": "10.1109/ISITIA59021.2023.10221089",
+  "doiUrl": "https://doi.org/10.1109/ISITIA59021.2023.10221089",
+  "chips": ["Transformer", "Deep Learning", "NLP", "Indonesian Language", "Syllabification"]
+}

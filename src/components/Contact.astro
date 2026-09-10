@@ -1,0 +1,41 @@
+---
+import meta from '../content/meta.json';
+---
+<section aria-labelledby="contact-heading">
+  <div class="wrap">
+    <div class="contact-card">
+      <div class="eyebrow">Open source profile</div>
+      <h2 id="contact-heading">Explore the code behind the public work.</h2>
+      <p>For source, experiments, and developer tools, explore GitHub. For professional history and connections, visit LinkedIn; for the complete formal employment and education timeline, use the CV. Based in Bandung, Indonesia.</p>
+      <div class="contact-actions no-print">
+        <a class="btn btn-primary" href={`mailto:${meta.email}`}>{meta.email}</a>
+        <a class="btn btn-secondary" href={meta.github} target="_blank" rel="noreferrer">github.com/kamil5b ↗</a>
+        <a class="btn btn-secondary" href={meta.linkedin} target="_blank" rel="noreferrer">linkedin.com/in/kamil5b ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-card {
+    padding: clamp(32px, 6vw, 70px); border: 1px solid #31423d; border-radius: 28px;
+    background: linear-gradient(135deg, rgba(140,247,197,.09), rgba(165,180,252,.045) 55%, rgba(255,255,255,.018));
+    box-shadow: var(--shadow);
+  }
+  .contact-card h2 { max-width: 800px; }
+  .contact-card p { max-width: 670px; margin: 18px 0 0; color: #b4bfbb; font-size: 17px; }
+  .contact-actions { margin-top: 30px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+  @media print {
+    .contact-card {
+      padding: 5mm; border-color: #aeb7c2; background: #ffffff !important;
+      box-shadow: none !important; break-inside: avoid; page-break-inside: avoid;
+    }
+    .contact-card p { color: #4b5563 !important; font-size: 9pt; }
+    .contact-actions { margin-top: 3mm; display: grid; gap: 1mm; }
+    .contact-actions .btn {
+      width: auto; justify-content: flex-start; padding: 0; border: 0; background: transparent !important;
+      color: #111111 !important; font-size: 8.5pt;
+    }
+  }
+</style>

@@ -1,0 +1,87 @@
+---
+import experience from '../content/experience.json';
+---
+<section id="experience" aria-labelledby="experience-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02 / Experience</div>
+      <div>
+        <h2 id="experience-heading">Production systems, AI, and data work.</h2>
+        <p class="section-copy">A condensed professional timeline cross-checked against my formal CV and LinkedIn experience history. The emphasis is progression, scope, and outcomes; private implementation details and repository identities remain intentionally omitted.</p>
+      </div>
+    </div>
+
+    <div class="experience-list">
+      {experience.map((job) => (
+        <article class="experience-card">
+          <div>
+            <div class="experience-date">{job.date}</div>
+            <div class="experience-org">{job.org}<br/>{job.location}</div>
+          </div>
+          <div>
+            <h3>{job.title}</h3>
+            <p>{job.description}</p>
+            {job.roles && (
+              <div class="role-stack">
+                {job.roles.map((role) => (
+                  <div class="role-item">
+                    <div class="role-item-head"><h4>{role.title}</h4><time>{role.period}</time></div>
+                    <p>{role.description}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+            {job.impacts && job.impacts.map((impact) => (
+              <p class="impact-line" set:html={impact.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')} />
+            ))}
+            <div class="chip-row">
+              {job.chips.map((chip) => (
+                <span class="chip">{chip}</span>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .experience-list { display: grid; gap: 16px; }
+  .experience-card {
+    display: grid; grid-template-columns: 220px 1fr; gap: 34px; padding: 28px;
+    border: 1px solid var(--line); border-radius: 18px; background: rgba(255,255,255,.018);
+  }
+  .experience-date { color: var(--accent-2); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: .055em; }
+  .experience-org { margin-top: 8px; color: var(--muted); font-size: 13px; }
+  .experience-card h3 { margin: 0 0 9px; font-size: 23px; letter-spacing: -.025em; }
+  .experience-card p { margin: 0; color: var(--muted); }
+  .impact-line { margin-top: 14px !important; color: #c8d1ce !important; font-size: 14px; }
+  .role-stack { display: grid; gap: 14px; margin-top: 18px; }
+  .role-item { padding: 16px 18px; border: 1px solid rgba(255,255,255,.07); border-radius: 14px; background: rgba(255,255,255,.018); }
+  .role-item-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 6px; }
+  .role-item h4 { margin: 0; font-size: 15px; letter-spacing: -.01em; }
+  .role-item time { color: var(--accent-2); font: 11px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; text-transform: uppercase; letter-spacing: .045em; white-space: nowrap; }
+  .role-item p { font-size: 14px; }
+
+  @media (max-width: 900px) {
+    .experience-card { grid-template-columns: 1fr; gap: 14px; }
+    .role-item-head { align-items: flex-start; flex-direction: column; gap: 4px; }
+  }
+  @media print {
+    .experience-list { gap: 3mm; }
+    .experience-card {
+      grid-template-columns: 35mm 1fr; gap: 5mm; padding: 4mm;
+      border-color: #cbd5e1; background: #ffffff !important;
+      break-inside: avoid; page-break-inside: avoid;
+    }
+    .experience-date { color: #374151 !important; }
+    .experience-card h3 { font-size: 13.5pt; }
+    .experience-card p, .role-item p { color: #4b5563 !important; font-size: 8.5pt; }
+    .impact-line { color: #303842 !important; }
+    .role-stack { gap: 2.5mm; margin-top: 3mm; }
+    .role-item { padding: 3mm; border-color: #d7dde5; background: #ffffff !important; break-inside: avoid; page-break-inside: avoid; }
+    .role-item h4 { font-size: 9pt; }
+    .role-item time { color: #4b5563 !important; font-size: 7pt; }
+  }
+</style>

@@ -1,0 +1,75 @@
+---
+import skills from '../content/skills.json';
+---
+<section id="stack" aria-labelledby="stack-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">06 / Stack signal</div>
+      <div>
+        <h2 id="stack-heading">Technology usage across repositories.</h2>
+        <p class="section-copy">Repository counts from the evidence snapshot are a signal of repeated exposure, not a claim that every repository has equal depth or production importance. Additional technologies supplied as experience are listed separately below without invented repository counts.</p>
+      </div>
+    </div>
+
+    <div class="stack-panel" role="list" aria-label="Technology repository counts">
+      {skills.barChart.map((row) => (
+        <div class="stack-row" role="listitem">
+          <div class="stack-name">{row.name}</div>
+          <div class="bar"><span style={`--w:${row.width}`}></span></div>
+          <div class="stack-count">{row.count} repos</div>
+        </div>
+      ))}
+    </div>
+
+    <div class="tech-matrix" aria-label="Additional technology experience">
+      {skills.groups.map((group) => (
+        <article class="tech-group">
+          <div class="tech-group-label">{group.label}</div>
+          <h3>{group.title}</h3>
+          <p>{group.description}</p>
+          <div class="chip-row">
+            {group.chips.map((chip) => (
+              <span class="chip">{chip}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stack-panel { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .stack-row { display: grid; grid-template-columns: 190px 1fr 84px; gap: 20px; align-items: center; min-height: 78px; padding: 0 24px; border-bottom: 1px solid var(--line); }
+  .stack-row:last-child { border-bottom: 0; }
+  .stack-name { font-weight: 750; letter-spacing: -.015em; }
+  .bar { height: 5px; overflow: hidden; border-radius: 99px; background: #20282c; }
+  .bar > span { display: block; height: 100%; width: var(--w); border-radius: inherit; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+  .stack-count { color: var(--muted); text-align: right; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+
+  .tech-matrix { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 20px; }
+  .tech-group { padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: rgba(255,255,255,.018); }
+  .tech-group-label { color: var(--accent-2); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .07em; }
+  .tech-group h3 { margin: 12px 0 8px; font-size: 20px; letter-spacing: -.02em; }
+  .tech-group p { margin: 0; color: var(--muted); font-size: 14px; }
+
+  @media (max-width: 680px) {
+    .stack-row { grid-template-columns: 1fr 64px; gap: 10px; padding: 17px 18px; }
+    .bar { grid-column: 1 / -1; grid-row: 2; }
+    .tech-matrix { grid-template-columns: 1fr; }
+  }
+  @media print {
+    .stack-list { border-color: #cbd5e1 !important; }
+    .stack-row { grid-template-columns: 42mm 1fr 15mm; gap: 3mm; padding: 2.5mm 3mm; border-color: #d7dde5 !important; }
+    .bar { background: #e5e7eb !important; }
+    .bar > span { background: #6b7280 !important; }
+    .stack-count { color: #374151 !important; }
+    .tech-matrix { grid-template-columns: repeat(2, 1fr); gap: 3mm; }
+    .tech-group {
+      padding: 4mm; border-color: #cbd5e1 !important;
+      background: #ffffff !important; break-inside: avoid; page-break-inside: avoid;
+    }
+    .tech-group h3 { font-size: 11.5pt; }
+    .tech-group p { color: #4b5563 !important; font-size: 8pt; }
+  }
+</style>

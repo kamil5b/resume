@@ -1,0 +1,59 @@
+---
+import skills from '../content/skills.json';
+---
+<section aria-labelledby="focus-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01 / Focus</div>
+      <div>
+        <h2 id="focus-heading">Engineering across the product stack.</h2>
+        <p class="section-copy">My work clusters around reliable Go services, internal developer platforms, database tooling, and product interfaces in TypeScript. I also build applied AI/ML systems—from LLM-powered products and document intelligence to deep-learning workflows and cloud-hosted model pipelines.</p>
+      </div>
+    </div>
+    <div class="focus-grid">
+      {skills.focus.map((item) => (
+        <article class="focus-card">
+          <div class="focus-num">{item.num}</div>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+          <div class="chip-row">
+            {item.chips.map((chip) => (
+              <span class="chip">{chip}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .focus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .focus-card {
+    position: relative; border: 1px solid var(--line); border-radius: 18px;
+    background: linear-gradient(150deg, rgba(255,255,255,.035), rgba(255,255,255,.012));
+    padding: 26px; min-height: 280px;
+  }
+  .focus-num { color: #68736e; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+  .focus-card h3 { margin: 42px 0 10px; font-size: 23px; letter-spacing: -.025em; }
+  .focus-card p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  @media (max-width: 900px) {
+    .focus-grid { grid-template-columns: 1fr; }
+    .focus-card { min-height: 220px; }
+  }
+  @media (max-width: 680px) {
+    .focus-grid { grid-template-columns: 1fr; }
+  }
+  @media print {
+    .focus-grid { grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+    .focus-card {
+      min-height: 0; padding: 4mm; border: 1px solid #cbd5e1;
+      background: #ffffff !important; box-shadow: none !important;
+      break-inside: avoid; page-break-inside: avoid;
+    }
+    .focus-card h3 { margin-top: 6mm; font-size: 12.5pt; }
+    .focus-card p { font-size: 8.5pt; color: #4b5563 !important; }
+    .focus-num { color: #64748b !important; }
+  }
+</style>

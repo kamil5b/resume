@@ -1,0 +1,83 @@
+{
+  "barChart": [
+    { "name": "Go", "count": 44, "width": "100%" },
+    { "name": "Shell", "count": 30, "width": "68%" },
+    { "name": "CSS", "count": 28, "width": "64%" },
+    { "name": "HTML", "count": 27, "width": "61%" },
+    { "name": "Dockerfile", "count": 27, "width": "61%" },
+    { "name": "JavaScript", "count": 26, "width": "59%" },
+    { "name": "TypeScript", "count": 23, "width": "52%" },
+    { "name": "Makefile", "count": 17, "width": "39%" },
+    { "name": "Python", "count": 11, "width": "25%" }
+  ],
+  "groups": [
+    {
+      "label": "AI / ML",
+      "title": "Modeling & deep learning",
+      "description": "Experience across classical ML, neural architectures, document intelligence, and transformer-based systems.",
+      "chips": ["XGBoost", "TensorFlow", "Transformers", "Deep Learning", "Donut VLM", "NLP", "Sentiment Analysis", "pandas", "NumPy"]
+    },
+    {
+      "label": "LLM systems",
+      "title": "LLM-powered products & tools",
+      "description": "Building AI features and developer tools around model APIs, retrieval/context patterns, and graph-based agent workflows.",
+      "chips": ["LLM API", "LangGraph", "Embeddings", "AI Agents", "LLM-powered Products", "MCP", "Claude VLM"]
+    },
+    {
+      "label": "Cloud / ML platform",
+      "title": "Managed model workflows",
+      "description": "Cloud-oriented machine-learning workflows including model experimentation, training, deployment, feature/data preparation, and supporting data pipelines.",
+      "chips": ["AWS SageMaker", "Python", "pandas", "NumPy", "Model Serving", "Data Pipelines"]
+    },
+    {
+      "label": "Backend / integrations",
+      "title": "Service architecture & external platforms",
+      "description": "Production backend and integration work across synchronous APIs, gRPC contracts, event-driven processing, identity, caching, and third-party platform integrations.",
+      "chips": ["Go", "Gin", "gRPC", "Protobuf", "Apache Kafka", "Redis", "MariaDB", "Keycloak / OIDC", "REST APIs", "Clean Architecture", "TM Forum"]
+    },
+    {
+      "label": "Product engineering",
+      "title": "Modern web & enterprise systems",
+      "description": "Full-stack TypeScript product development spanning modern React meta-frameworks, ERP-style operational systems, analytics dashboards, and business reporting.",
+      "chips": ["TanStack Start", "Next.js", "React", "Vue 3", "Bun", "Elysia", "Flutter", "Dart", "TypeScript", "ERP", "Metabase"]
+    }
+  ],
+  "focus": [
+    {
+      "num": "01",
+      "title": "Backend & platform",
+      "description": "APIs, workers, modular monoliths, service gateways, database-facing systems, and deployment-friendly tooling.",
+      "chips": ["Go", "PostgreSQL", "Docker", "Shell"]
+    },
+    {
+      "num": "02",
+      "title": "Developer tools",
+      "description": "CLIs, schema tooling, code generation, lightweight DB interfaces, framework experiments, and workflow automation.",
+      "chips": ["CLI", "Codegen", "HTMX", "Make"]
+    },
+    {
+      "num": "03",
+      "title": "Full-stack & AI",
+      "description": "Modern TypeScript products and AI-enabled applications, including agentic LLM workflows, document understanding, model integration, and deep-learning experimentation.",
+      "chips": ["TypeScript", "Next.js", "TanStack Start", "LangGraph", "Python"]
+    }
+  ],
+  "approach": [
+    {
+      "title": "Small surface area",
+      "description": "Prefer understandable systems, explicit dependencies, and operational simplicity over unnecessary framework weight."
+    },
+    {
+      "title": "Build the tool you need",
+      "description": "When a workflow is repetitive or awkward, I tend to turn it into a CLI, generator, gateway, library, or small internal platform."
+    },
+    {
+      "title": "Cross the boundary",
+      "description": "Backend is the center of gravity, but I'm comfortable moving into TypeScript UI work, ERP workflows, cloud ML infrastructure, model integration, and AI product prototyping when the product needs it."
+    },
+    {
+      "title": "Learn from fundamentals",
+      "description": "Public projects range from algorithms and ML experiments to full-stack frameworks and DB tooling—evidence of learning by implementing, testing, and shipping."
+    }
+  ]
+}

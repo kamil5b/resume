@@ -1,0 +1,36 @@
+---
+import skills from '../content/skills.json';
+---
+<section aria-labelledby="approach-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">07 / Approach</div>
+      <div><h2 id="approach-heading">A practical engineering bias.</h2></div>
+    </div>
+    <div class="principles">
+      {skills.approach.map((principle) => (
+        <article class="principle">
+          <h3>{principle.title}</h3>
+          <p>{principle.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .principles { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .principle { padding: 28px 0; border-top: 1px solid var(--line); }
+  .principle h3 { margin: 0 0 9px; font-size: 21px; }
+  .principle p { margin: 0; color: var(--muted); max-width: 500px; }
+
+  @media (max-width: 680px) {
+    .principles { grid-template-columns: 1fr; }
+  }
+  @media print {
+    .principles { grid-template-columns: repeat(2, 1fr); gap: 4mm; }
+    .principle { padding: 3mm 0; border-color: #cbd5e1 !important; break-inside: avoid; }
+    .principle h3 { font-size: 11pt; }
+    .principle p { color: #4b5563 !important; font-size: 8.25pt; }
+  }
+</style>
