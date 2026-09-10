@@ -1,0 +1,97 @@
+{
+  "openSource": [
+    {
+      "name": "db2toon",
+      "badge": "AI context · Database tooling",
+      "description": "A Go CLI that turns existing database schemas into compact, human-readable TOON context for developers and AI coding agents. It supports MCP and multiple database engines, helping reduce schema-context overhead compared with raw SQL or verbose interchange formats.",
+      "meta": ["Go", "MCP", "multi-database"],
+      "chips": ["PostgreSQL", "MySQL / MariaDB", "SQLite", "DuckDB", "CockroachDB"],
+      "url": "https://github.com/kamil5b/db2toon"
+    },
+    {
+      "name": "Clean Fullstack Go + Vite + React",
+      "badge": "Go · Full-stack architecture",
+      "description": "A production-oriented full-stack boilerplate that embeds a Vite + React frontend into a Go binary while keeping frontend and backend boundaries explicit. Designed to ship as one binary early, then detach into API + CDN deployment later without rewriting the product architecture.",
+      "meta": ["single binary", "go:embed", "API-first"],
+      "chips": ["Go", "React", "Vite", "Tailwind CSS", "Clean Architecture"],
+      "url": "https://github.com/kamil5b/clean-go-vite-react"
+    },
+    {
+      "name": "Go PSTE Modular Monolith",
+      "badge": "Architecture · Modular monolith",
+      "description": "An open-source Go architecture built around Plug, Swap, Toggle, Extract: swap infrastructure implementations without touching business logic, toggle features through configuration, and keep domain modules extractable when microservices are actually justified.",
+      "meta": ["HTTP + gRPC", "feature flags", "80–100% core test coverage"],
+      "chips": ["Go", "Echo / Gin / Fiber", "PostgreSQL / MongoDB", "RabbitMQ / Redpanda", "S3 / GCS"],
+      "url": "https://github.com/kamil5b/go-pste-monolith"
+    },
+    {
+      "name": "bev-fs",
+      "badge": "TypeScript · Full-stack framework",
+      "description": "A Bun + Elysia + Vue full-stack framework built around deployment freedom and end-to-end TypeScript safety, with directory-based API/page routing, automatic route discovery, middleware composition, scaffolding templates, and single-port production deployment.",
+      "meta": ["framework + CLI", "no platform lock-in", "single-port deploy"],
+      "chips": ["Bun", "Elysia", "Vue 3", "TypeScript", "Tailwind optional"],
+      "url": "https://github.com/kamil5b/bev-fs"
+    },
+    {
+      "name": "MacaUang · Camera Money Detector",
+      "badge": "Accessibility · Vision-language AI",
+      "description": "A Flutter mobile app that combines the device camera, Claude 3.5 Haiku vision-language capabilities, and text-to-speech to identify banknotes and announce denominations—designed to support visually impaired users.",
+      "meta": ["mobile AI", "camera → VLM → speech", "accessibility"],
+      "chips": ["Flutter", "Dart", "Claude VLM", "Text-to-Speech", "Mobile"],
+      "url": "https://github.com/kamil5b/cauang"
+    },
+    {
+      "name": "NextJS Fullstack Monolith",
+      "badge": "Next.js · ERP-ready monolith",
+      "description": "An MVP-oriented monolith for small teams and solo engineers with explicit server/client/shared boundaries, a Handler → Service → Repository backend, service-owned transactions, shared API contracts and RBAC, JWT auth, and S3-compatible file uploads.",
+      "meta": ["3-layer backend", "shared contracts", "single deployment"],
+      "chips": ["Next.js", "React 19", "PostgreSQL", "Tailwind CSS v4", "shadcn/ui", "RBAC"],
+      "url": "https://github.com/kamil5b/kamil-boilerplate"
+    },
+    {
+      "name": "Natural language → query",
+      "badge": "Applied AI · Developer library",
+      "description": "A Go library for translating plain-language requests into SQL or NoSQL queries using embeddings and LLM-assisted generation—part of a broader focus on LLM APIs, structured context, and AI-powered developer tooling.",
+      "meta": ["Go", "LLM API", "embeddings"],
+      "chips": ["SQL / NoSQL", "Embeddings", "LLM-powered tooling"],
+      "url": "https://github.com/kamil5b/go-nl2query-lib"
+    },
+    {
+      "name": "JKT48 NLP Bot",
+      "badge": "NLP · Social automation",
+      "description": "A Python/Tweepy social-media analysis bot that automated NLP tasks around public JKT48 content, including sentiment analysis, emotion analysis, and word-cloud generation.",
+      "meta": ["2023", "social NLP", "automation"],
+      "chips": ["Python", "Tweepy", "NLP", "Sentiment Analysis", "Emotion Analysis"],
+      "url": "https://github.com/kamil5b/jkt48_nlp"
+    }
+  ],
+  "privateNote": "More public experiments include PostgreSQL tooling, KNN-from-scratch work in Go, Flutter prototypes, and a Telegram-to-Discord live notification bridge. The GitHub profile has the full public history.",
+  "privateCount": "51",
+  "privateCountText": " private repositories are represented only as aggregate experience in this portfolio.",
+  "privateScope": [
+    {
+      "icon": "PRIVATE / BACKEND",
+      "title": "Production APIs & worker systems",
+      "description": "High-activity Go codebases covering API services, background workers, PostgreSQL-backed workflows, service integration, build automation, and containerized deployment.",
+      "chips": ["Go", "PostgreSQL", "Docker", "Make", "Shell"]
+    },
+    {
+      "icon": "PRIVATE / FULL-STACK",
+      "title": "Operational dashboards & product interfaces",
+      "description": "Full-stack web applications, ERP-oriented workflows, and internal dashboards focused on operations, reporting, configurable product behavior, and production-grade user interfaces.",
+      "chips": ["TypeScript", "Next.js", "TanStack Start", "ERP", "Metabase", "Docker"]
+    },
+    {
+      "icon": "PRIVATE / PLATFORM",
+      "title": "Platform services & integrations",
+      "description": "Infrastructure-adjacent work including messaging gateways, shared service contracts, feature-control tooling, automation, and systems designed to support multiple internal applications.",
+      "chips": ["Go", "TypeScript", "Protobuf", "Automation"]
+    },
+    {
+      "icon": "PRIVATE / DATA & AI",
+      "title": "AI/ML, document intelligence & assisted workflows",
+      "description": "Applied ML and LLM-powered systems spanning model APIs, agentic workflows, document understanding, transformer-based models, classical gradient boosting, and cloud-hosted experimentation.",
+      "chips": ["AWS SageMaker", "XGBoost", "TensorFlow", "Transformers", "Deep Learning", "Donut VLM", "LangGraph", "pandas", "NumPy"]
+    }
+  ]
+}
